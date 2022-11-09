@@ -1,0 +1,355 @@
+\documentclass[a4paper, 16pt]{article}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage[russian, english]{babel}
+\usepackage{subfiles}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage{ucs}
+\usepackage{textcomp}
+\usepackage{array}
+\usepackage{indentfirst}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage[margin=1.2cm]{geometry}
+\usepackage{authblk}
+\usepackage{tikz}
+\usepackage{icomma}
+\usepackage{gensymb}
+\usepackage{graphicx}
+
+\newcommand{\dropsign}[1]{\smash{\llap{\raisebox{-.5\normalbaselineskip}{$#1$\hspace{2\arraycolsep}}}}}%
+
+\DeclareGraphicsExtensions{,.png,.jpg}
+
+\DeclareMathOperator*\lowlim{\underline{lim}}
+\DeclareMathOperator*\uplim{\overline{lim}}
+
+\graphicspath{{pictures/}}
+
+\renewcommand{\baselinestretch}{1.4}
+
+\renewcommand{\C}{\mathbb{C}}
+\newcommand{\N} {\mathbb{N}}
+\newcommand{\Q} {\mathbb{Q}}
+\newcommand{\Z} {\mathbb{Z}}
+\newcommand{\R} {\mathbb{R}}
+\newcommand{\ord} {\mathop{\rm ord}}
+\newcommand{\Ima}{\mathop{\rm Im}}
+\newcommand{\rk}{\mathop{\rm rk}}
+
+\renewcommand{\r}{\right}
+\renewcommand{\l}{\left}
+\renewcommand{\inf}{\infty}
+\newcommand{\Sum}[2]{\overset{#2}{\underset{#1}{\sum}}}
+\newcommand{\Lim}[2]{\lim\limits_{#1 \rightarrow #2}}
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+
+\newcommand{\task}[1] {\noindent \textbf{Задача #1.} \hfill}
+\newcommand{\note}[1] {\noindent \textbf{Примечание #1.} \hfill}
+\newenvironment{proof}[1][Доказательство]{%
+	\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1:}]
+		\item \hspace{14pt}
+	}{
+		$ \hfill\blacksquare $
+	\end{trivlist}
+	\hfill\break
+}
+\newenvironment{solution}[1][Решение]{%
+	\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1:}]
+		\item \hspace{15pt}
+	}{
+	\end{trivlist}
+}
+
+\newenvironment{answer}[1][Ответ]{%
+	\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1:}] \hskip \labelsep
+	}{
+	\end{trivlist}
+	\hfill
+}
+
+\title{Алгебра} 
+\date{\today}
+\author{Сидоров Дмитрий}
+\affil{Группа БПМИ 219}
+
+
+\begin{document}
+	\maketitle
+	
+	\section*{№1}
+	
+		Найдите наибольший общий делитель многочленов $f, g \in K[x]$, а также его линейное выражение через $f$ и $g$ в следующих случаях:
+		
+		(а) $K = \R, f = x^5 +x^4 - x^3 -2x-1, g = 3x^4 - 2x^3 + x^2 - 2x - 2$;
+		
+		(б) $K = \Z_5, f = x^5 +2x^4+ 4x^3 + 2x^2+ 4, g = 3x^3+ 4x^2 + 4x + 1$.
+		
+		\begin{solution}
+			
+			\subsection*{a)}
+			Известно, что НОД двух многочленов находится с помощью прямого хода алгоритма Евклида, а линейное выражение НОД находится с помощью обратного хода алгоритма Евклида. Разделим $f$ на $g$:
+			
+			\begin{gather*}
+				    \begin{array}{r|l}
+					\dropsign{-} x^5+x^4-x^3-2x-1 & 3x^4-2x^3+x^2-2x-2 \\ \cline{2-2}
+					x^5-\frac{2}{3}x^4+\frac{1}{3}x^3-\frac{2}{3}x^2-\frac{2}{3}x& \frac{1}{3}x+\frac{5}{9} \\ \cline{1-1} \\[\dimexpr-\normalbaselineskip+\jot]
+					\dropsign{-} \frac{5}{3}x^4-\frac{\:4\:}{3}x^3+\frac{2}{3}x^2-\frac{\:4\:}{3}x-1\:\: \\
+					\frac{5}{3}x^4-\frac{10}{9}x^3+\frac{5}{9}x^2-\frac{10}{9}x-\frac{10}{9} \\ \cline{1-1} \\[\dimexpr-\normalbaselineskip+\jot]
+					-\frac{2}{9}x^3+\frac{1}{9}x^2-\frac{2}{9}x+\frac{1}{9}
+				\end{array}
+			\end{gather*}
+		
+			Значит $f = (x^5 +x^4 - x^3 -2x-1) = (3x^4 - 2x^3 + x^2 - 2x - 2) \cdot  (\frac{1}{3}x+\frac{5}{9})  	-\frac{2}{9}x^3+\frac{1}{9}x^2-\frac{2}{9}x+\frac{1}{9} = g (\frac{1}{3}x+\frac{5}{9}) 	-\frac{2}{9}x^3+\frac{1}{9}x^2-\frac{2}{9}x+\frac{1}{9} = \ =g (\frac{1}{3}x+\frac{5}{9}) + r_1$, где  $r_1 = -\frac{2}{9}x^3+\frac{1}{9}x^2-\frac{2}{9}x+\frac{1}{9}$. Теперь разделим $g$ на $r_1$:
+			
+						
+			\begin{gather*}
+				\begin{array}{r|l}
+					\dropsign{-} 3x^4 - 2x^3 + x^2 - 2x - 2 & -\frac{2}{9}x^3+\frac{1}{9}x^2-\frac{2}{9}x+\frac{1}{9} \\ \cline{2-2}
+					3x^4 - \frac{3}{2}x^3 +3 x^2 - \frac{3}{2}x& 
+					-\frac{27}{2}x +\frac{9}{4}
+					\\ \cline{1-1} \\[\dimexpr-\normalbaselineskip+\jot]
+					\dropsign{-} 
+					-\frac{1}{2}x^3-2x^2 - \frac{1}{2}x-2\:\: \\
+					-\frac{1}{2}x^3 + \frac{1}{4}x^2-\frac{1}{2}x+\frac{1}{4}
+					\\ \cline{1-1} \\[\dimexpr-\normalbaselineskip+\jot]
+					-\frac{9}{4}x^2-\frac{9}{4}
+				\end{array}
+			\end{gather*}
+		
+			Значит $g = 3x^4 - 2x^3 + x^2 - 2x - 2 = (-\frac{2}{9}x^3+\frac{1}{9}x^2-\frac{2}{9}x+\frac{1}{9})(	-\frac{27}{2}x +\frac{9}{4}) + (	-\frac{9}{4}x^2-\frac{9}{4}) = r_1(	-\frac{27}{2}x +\frac{9}{4}) + r_2$, где $r_2 = 	-\frac{9}{4}x^2-\frac{9}{4}$. Теперь разделим $r_1$ на $r_2$:
+			
+				\begin{gather*}
+				\begin{array}{r|l}
+					\dropsign{-} -\frac{2}{9}x^3+\frac{1}{9}x^2-\frac{2}{9}x+\frac{1}{9}& -\frac{9}{4}x^2-\frac{9}{4}\\ \cline{2-2}
+					-\frac{2}{9}x^3-\frac{2}{9}x& 
+					\frac{8}{81}x -\frac{4}{81}
+					\\ \cline{1-1} \\[\dimexpr-\normalbaselineskip+\jot]
+					\dropsign{-} 
+					\frac{1}{9}x^2 + \frac{1}{9}x\:\: \\
+					\frac{1}{9}x^2 + \frac{1}{9}x
+					\\ \cline{1-1} \\[\dimexpr-\normalbaselineskip+\jot]
+					0
+				\end{array}
+			\end{gather*}
+		
+		Получили, что $r_1$ делится на $r_2$, а значит НОД$(f, g) = r_2 = -\frac{9}{4}x^2-\frac{9}{4}$. Тк $g = r_1(	-\frac{27}{2}x +\frac{9}{4}) + r_2$, то $r_2 = g - r_1(	-\frac{27}{2}x +\frac{9}{4})$, и тк $f = g (\frac{1}{3}x+\frac{5}{9}) + r_1$, то $r_1 = f - g (\frac{1}{3}x+\frac{5}{9})$, а значит $r_2 = g - (f - g (\frac{1}{3}x+\frac{5}{9}))(-\frac{27}{2}x +\frac{9}{4}) = g - f(-\frac{27}{2}x +\frac{9}{4}) + g (\frac{1}{3}x+\frac{5}{9})(-\frac{27}{2}x +\frac{9}{4}) = g + \frac{27}{2}xf - \frac{9}{4}f + g(-\frac{9}{2}x^2 - \frac{15}{2}x+\frac{3}{4}x + \frac{5}{4}) = f(\frac{27}{2}x - \frac{9}{4}) + g(-\frac{9}{2}x^2 - \frac{27}{4}x + \frac{9}{4})$ - линейное выражение $r_2$ через $f$ и $g$.
+	
+	
+		\end{solution}
+	
+		\begin{answer}
+			НОД($f, g$) = -$\frac{9}{4}x^2-\frac{9}{4} = f(\frac{27}{2}x - \frac{9}{4}) + g(-\frac{9}{2}x^2 - \frac{27}{4}x + \frac{9}{4})$.
+		\end{answer}
+	
+	\subsection*{б)}
+
+			Аналогично с а) сначала разделим $f$ на $g$:
+			
+						
+			\begin{gather*}
+				\begin{array}{r|l}
+					\dropsign{-} x^5 +2x^4+ 4x^3 + 2x^2+ 4 & 3x^3+ 4x^2 + 4x + 1\\ \cline{2-2}
+					x^5 + 3x^4 + 3x^3 + 2x^2&
+					2x^2 + 3x + 3
+					 \\ \cline{1-1} \\[\dimexpr-\normalbaselineskip+\jot]
+					\dropsign{-} 
+					4x^4 + x^3 + 4\:\: \\
+					4x^4 + 2x^3 + 2x^2 + 3x
+				 \\ \cline{1-1} \\[\dimexpr-\normalbaselineskip+\jot]
+				 	\dropsign{-} 
+				4x^3+3x^2+2x + 4 \:\: \\
+				4x^3+2x^2+2x+3
+				 \\ \cline{1-1} \\[\dimexpr-\normalbaselineskip+\jot]
+				 x^2 + 1							 
+				\end{array}
+			\end{gather*}
+		
+		Значит $f =g(	2x^2 + 3x + 3) +  x^2 + 1 \Rightarrow r_1 =  x^2 + 1		$. Разделим $g$ на $r_1$:		
+		
+		\begin{gather*}
+			\begin{array}{r|l}
+				\dropsign{-} 3x^3+ 4x^2 + 4x + 1 & x^2 + 1		\\ \cline{2-2}
+				3x^3+3x&
+				3x + 4
+				\\ \cline{1-1} \\[\dimexpr-\normalbaselineskip+\jot]
+				\dropsign{-} 
+				4x^2 +x+1\:\: \\
+				4x^2 + 4
+				\\ \cline{1-1} \\[\dimexpr-\normalbaselineskip+\jot]
+				x + 2							 
+			\end{array}
+		\end{gather*}
+	
+		Значит $g = r_1(3x+4) + (x+2) \Rightarrow r_2 = x+2$. Разделим $r_1$ на $r_2$:
+		
+		\begin{gather*}
+			\begin{array}{r|l}
+				\dropsign{-} x^2+1 & x + 2		\\ \cline{2-2}
+				x^2 + 2x&
+				x + 3
+				\\ \cline{1-1} \\[\dimexpr-\normalbaselineskip+\jot]
+				\dropsign{-} 
+				3x+1\:\: \\
+				3x + 1
+				\\ \cline{1-1} \\[\dimexpr-\normalbaselineskip+\jot]
+				0							 
+			\end{array}
+		\end{gather*}
+	
+			Получили, что $r_1$ делится на $r_2$, а значит НОД$(f, g) = r_2 = x+2 = g - r_1(3x+4) = g - (f - g(	2x^2 + 3x + 3))(3x+4) = g - 3xf-4f + g(x^3 + 4x^2 + 4x + 3x^2 + 2x+2) = f(2x+1) + g(x^3 + 2x^2 + x + 3)$ - линейное выражение $r_2$ через $f$ и $g$.
+			
+			\begin{answer}
+					НОД($f, g$) = $x+2 =  f(2x+1) + g(x^3 + 2x^2 + x + 3)$.
+			\end{answer}
+	
+	\section*{№2}
+	
+		Разложите многочлен $f$ в произведение неприводимых в кольце $K[x]$ в следующих случаях:
+		
+		(а) $K \in \{\R, \C\}, f = x^5 + 2x^3 - 6x^2-12$;
+		
+		(б) $K = \Z_5, f = x^5+ 3x^4+ x^3 + x^2 + 3$.
+		
+			\subsection*{a)}
+			
+					\begin{solution}
+			Случай 1 - $\R$. $x^5 + 2x^3 - 6x^2 - 12 = x^3(x^2 + 2) - 6(x^2 + 2) = (x^3 - 6)(x^2+2)$. Заметим, что для $x^2 + 2, \ D = -8 < 0 \Rightarrow x^2+2$ не имеет корней в $R$ и неприводим (тк многочлен второй степени неприводим над $\R$ $\Leftrightarrow$ многочлен не имеет корней в $\R$). Рассмотрим многочлен $x^3 - 6$: $x^3 - 6 = (x-\sqrt[3]{6})(x^2 + \sqrt[3]{6}x + \sqrt[3]{36})$. Известно, что всякий многочлен первой степени автоматически неприводим, а значит $ x-\sqrt[3]{6}$ неприводим. Заметим, что для $x^2 + \sqrt[3]{6}x + \sqrt[3]{36}, \ D = \sqrt[3]{36} - 4\sqrt[3]{36} = -3\sqrt[3]{36} < 0 \Rightarrow x^2 + \sqrt[3]{6}x + \sqrt[3]{36}$ не имеет корней в $\R$, а значит он неприводим. Таким образом, $f = (x-\sqrt[3]{6})(x^2 + \sqrt[3]{6}x + \sqrt[3]{36})(x^2+2)$ - искомое разложение.
+			
+			Случай 2 - $\C$. $f = (x-\sqrt[3]{6})(x^2 + \sqrt[3]{6}x + \sqrt[3]{36})(x^2+2)$, степень $x-\sqrt[3]{6}$ равна 1, значит от неприводим. Заметим, что для $x^2 + \sqrt[3]{6}x + \sqrt[3]{36}, \ D = - 3 \sqrt[3]{36} \Rightarrow x^2 + \sqrt[3]{6}x + \sqrt[3]{36} = (x - \frac{-\sqrt[3]{6}+i \cdot 3\sqrt[3]{36}}{2})(x - \frac{-\sqrt[3]{6}-i \cdot 3\sqrt[3]{36}}{2})$ (тк $ \frac{-\sqrt[3]{6}+i \cdot 3\sqrt[3]{36}}{2}, \frac{-\sqrt[3]{6}-i \cdot 3\sqrt[3]{36}}{2}$ - корни $x^2 + \sqrt[3]{6}x + \sqrt[3]{36}$ в $\C$), и $x - \frac{-\sqrt[3]{6}+i \cdot 3\sqrt[3]{36}}{2}, \ x - \frac{-\sqrt[3]{6}-i \cdot 3\sqrt[3]{36}}{2}$ являются многочленами степени 1, а значит они неприводимы. Так же заметим, что для $x^2 + 2, \ D = -8 \Rightarrow x^2 + 2 = (x-i\sqrt2)(x + i\sqrt{2})$ (тк $i\sqrt{2}, \ -i\sqrt{2}$ - корни $x^2 + 2$ в $\C$), и $x-i\sqrt2, \ x + i\sqrt{2}$ являются многочленами степени 1, а значит они неприводимы. Таким образом, $f = (x-\sqrt[3]{6})(x - \frac{-\sqrt[3]{6}+i \cdot 3\sqrt[3]{36}}{2})(x - \frac{-\sqrt[3]{6}-i \cdot 3\sqrt[3]{36}}{2})(x-i\sqrt2)(x + i\sqrt{2})$ - искомое разложение.
+			
+			\begin{answer}
+				$(x-\sqrt[3]{6})(x^2 + \sqrt[3]{6}x + \sqrt[3]{36})(x^2+2), \ (x-\sqrt[3]{6})(x - \frac{-\sqrt[3]{6}+i \cdot 3\sqrt[3]{36}}{2})(x - \frac{-\sqrt[3]{6}-i \cdot 3\sqrt[3]{36}}{2})(x-i\sqrt2)(x + i\sqrt{2})$
+			\end{answer}
+		
+	\end{solution}
+			
+			\subsection*{б)}
+			
+					\begin{solution}
+			
+				Заметим, что $f(4) = 4^5 + 3 \cdot 4^4 + 4^3 + 4^2 + 3 = 1024 + 3 \cdot 256 + 83 = 1107 + 768 = 1875$ делится на 5, а значит 4 - корень $f$. Тогда разделим $f$ на $x - 4$: 
+				
+				\begin{gather*}
+					\begin{array}{r|l}
+						\dropsign{-} x^5+ 3x^4+ x^3 + x^2 + 3 & x -4	\\ \cline{2-2}
+						x^5 - 4x^4&
+						x^4 + 2x^3 + 4x^2 + 2x + 3
+						\\ \cline{1-1} \\[\dimexpr-\normalbaselineskip+\jot]
+						\dropsign{-} 
+						2x^4+ x^3 + x^2 + 3\:\: \\
+						2x^4 + 2x^3
+						\\ \cline{1-1} \\[\dimexpr-\normalbaselineskip+\jot]
+						\dropsign{-} 
+						4x^3 + x^2 + 3\:\: \\
+						4x^3 + 4x^2
+						\\ \cline{1-1} 	\\[\dimexpr-\normalbaselineskip+\jot]		
+						\dropsign{-} 
+						2x^2 + 3		 \:\: \\
+						2x^2 + 2x
+						\\ \cline{1-1} 	\\[\dimexpr-\normalbaselineskip+\jot]		
+						\dropsign{-} 
+						3x + 3			 \:\: \\
+						3x + 3
+												\\ \cline{1-1} 	\\[\dimexpr-\normalbaselineskip+\jot]		
+												0
+					\end{array}
+				\end{gather*}
+			
+			Получили, что $f = (x-4)(x^4 + 2x^3 + 4x^2 + 2x + 3) = (x+1)(x^4 + 2x^3 + 4x^2 + 2x + 3)$. Заметим, что $3^4 + 2 \cdot 3^3 + 4 \cdot 3^2 + 2 \cdot 3 + 3 = 81 + 54 + 36 + 6 + 3 = 180$ делится на 5, а значит 3 - корень $f$ и корень $x^4 + 2x^3 + 4x^2 + 2x + 3$. Разделим $x^4 + 2x^3 + 4x^2 + 2x + 3$ на $x - 3$.
+			
+			\begin{gather*}
+				\begin{array}{r|l}
+					\dropsign{-} x^4 + 2x^3 + 4x^2 + 2x + 3 & x - 3	\\ \cline{2-2}
+					x^4-3x^3 & 
+					x^3 + 4x + 4
+					\\ \cline{1-1} \\[\dimexpr-\normalbaselineskip+\jot]
+					\dropsign{-} 
+					4x^2 + 2x + 3\:\: \\
+					4x^2 + 3x
+					\\ \cline{1-1} \\[\dimexpr-\normalbaselineskip+\jot]
+					\dropsign{-} 
+					4x + 3 \:\: \\
+					4x + 3
+					\\ \cline{1-1} 	\\[\dimexpr-\normalbaselineskip+\jot]		
+					0
+				\end{array}
+			\end{gather*}
+		
+		Значит $f = (x+1)(x-3)(x^3 + 4x + 4) = (x+1)(x+2)(x^3 + 4x + 4)$. Заметим, что $2^3 + 4 \cdot 2 + 4 = 8 + 8 + 4 = 20$ делится на 5, а значит 2 - корень $f$ и корень $x^3 + 4x + 4$. Разделим $x^3 + 4x + 4$ на $x - 2$.
+		
+		\begin{gather*}
+			\begin{array}{r|l}
+				\dropsign{-} x^3 + 4x + 4 & x - 2	\\ \cline{2-2}
+				x^3 + 3x^2 & 
+				x^2 + 2x + 3
+				\\ \cline{1-1} \\[\dimexpr-\normalbaselineskip+\jot]
+				\dropsign{-} 
+				2x^2 + 4x + 4\:\: \\
+				2x^2 + x
+				\\ \cline{1-1} \\[\dimexpr-\normalbaselineskip+\jot]
+				\dropsign{-} 
+				3x + 4 \:\: \\
+				3x + 4
+				\\ \cline{1-1} 	\\[\dimexpr-\normalbaselineskip+\jot]		
+				0
+			\end{array}
+		\end{gather*}
+			
+			Значит $f = (x+1)(x+2)(x-2)(x^2 + 2x + 3) = (x+1)(x+2)(x+3)(x^2 + 2x + 3)$. Заметим, что степень $g = x^2 + 2x + 3$ равна 2, и при этом $g(0) = 3, g(1) = 6, g(2) = 11, g(3) = 18, g(4) = 27$, ни одно из этих значений не делится нацело на 5, а значит $x^2 + 2x + 3$ неприводим над $\Z_5$. Таким рбразом, $f = (x+1)(x+2)(x+3)(x^2 + 2x + 3)$ - искомое разложение.
+			
+		\end{solution}
+	
+		\begin{answer}
+			$(x+1)(x+2)(x+3)(x^2 + 2x + 3)$
+		\end{answer}
+	
+	\section*{№3}
+	
+		Рассмотрим факторкольцо $F = \Q[z] / (z^3 - z^2 - 1)$ и обозначим через $\alpha$ класс элемента $z$ в нём. Докажите, что $F$ является полем, и представьте элемент $\frac{3\alpha^2 - 12\alpha + 7}{\alpha^2 - 3\alpha + 1} \in F$ в виде $f(\alpha)$, где $f(z) \in \Q[z]$ и $\text{deg}f \leq 2$.
+		
+		\begin{proof}
+			Докажем, что $F = \Q[z] / (z^3 - z^2 - 1)$ является полем. Известно, что $F = \Q[z] / (z^3 - z^2 - 1)$ - поле $\Leftrightarrow z^3 - z^2 - 1$ неприводим в $\Q[z]$ (тк $K[x] / (h)$ является полем $\Leftrightarrow$ многочлен $h$ неприводим в $K[x]$). Пусть $\frac{p}{q}, \ p \in \Z, q \in \N, \\ \text{НОД}(p, q) = 1$ является рациональным корнем $z^3 - z^2 - 1$. Тогда $\left(\frac{p}{q}\right)^3 - \left(\frac{p}{q}\right)^2 - 1 = \frac{p^3 - qp^2 - q^3}{q^3} = 0 \Rightarrow p^3  \ \vdots \ q$ (тк $p^3 - qp^2 - q^3$ должен делиться на $q$, тк равен 0) и $q^3 \ \vdots \ p$ (тк $p^3 - qp^2 - q^3$ должен делиться на $p$, тк равен 0). Значит, либо $\frac{p}{q} = \pm 1$, либо $\text{НОД}(p, q) \ne 1$. Таким образом, $\frac{p}{q} = \pm 1$. Покажем, что 1 и -1 не являются корнями $z^3 - z^2 - 1$. $z = 1: \ 1 - 1 - 1 = -1 \ne 0; \ z = -1: \ -1 - 1 - 1 = -3 \ne 0$. Значит, тк $z^3 - z^2 - 1$ имеет степень 3 и не имеет корней, то он неприводим, а значит $F = \Q[z] / (z^3 - z^2 - 1)$ является полем.
+		\end{proof} 
+	
+		\begin{solution}
+			Пусть $f \in \Q[z]$. Тогда $\overline{f} = r + (z^3 - z^2 - 1)$, где $r$ - остаток от деления $f$ на $(z^3 - z^2 - 1)$. Тк все остатки по модулю $(z^3 - z^2 - 1)$ имеют вид  $Az^2 + Bz + C, \ A, B, C \in \Q$, то $F$ можно отождествить с многочленами вида $A\alpha^2 + B\alpha + C, \ A, B, C \in \Q$. При этом, тк $\alpha^3 - \alpha^2 - 1 = 0$, то $\alpha^3 = \alpha^2 + 1$. Тк $\frac{3\alpha^2 - 12\alpha + 7}{\alpha^2 - 3\alpha + 1} \in F$, то $\alpha^2 - 3\alpha + 1 \ne \overline{0}$ и $\frac{3\alpha^2 - 12\alpha + 7}{\alpha^2 - 3\alpha + 1} = A\alpha^2 + B\alpha + C, \ A, B, C \in \Q$. Тогда $3\alpha^2 - 12\alpha + 7 = (\alpha^2 - 3\alpha + 1)( A\alpha^2 + B\alpha + C$) = $A\alpha^4 + (B - 3A) \alpha^3 + (C - 3B + A) \alpha^2 + (-3C + B) \alpha + C = A\alpha(\alpha^2 + 1) + (B - 3A)(\alpha^2 + 1) + (C - 3B + A) \alpha^2 + (-3C + B) \alpha + C = A\alpha^3 + A\alpha  + (B - 3A)(\alpha^2 + 1) + (C - 3B + A) \alpha^2 + (-3C + B) \alpha + C = A(\alpha^2 + 1) + A\alpha  + (B - 3A)(\alpha^2 + 1) + (C - 3B + A) \alpha^2 + (-3C + B) \alpha + C = (-A - 2B + C)\alpha^2 + (A - 3C + B)\alpha - 2A + B + C$. Значит $\left\{\begin{matrix}
+				-A - 2B + C = 3 \\
+				A - 3C + B = -12 \\
+				-2A + B + C = 7
+			\end{matrix}\right. \Rightarrow \left\{\begin{matrix}
+			A = -2B + C - 3 \\
+			-B - 2C = -9 \\
+			5B - C = 1
+			\end{matrix}\right. \Rightarrow \left\{\begin{matrix}
+			A = -2B + C - 3 \\
+			B=  -2C + 9 \\
+		   -  11 C = -44
+		\end{matrix}\right. \Rightarrow (A, B, C) = (-1, 1, 4)$. Таким образом, $\frac{3\alpha^2 - 12\alpha + 7}{\alpha^2 - 3\alpha + 1} = -\alpha^2 + \alpha + 4$ -  искомое представление.
+		\end{solution}
+	
+		\begin{answer}
+			$-\alpha^2 + \alpha + 4$
+		\end{answer}
+	
+	\section*{№4}
+	
+		Пусть $K$ - поле и $h \in K[x]$ - многочлен положительной степени. Докажите, что всякий ненулевой необратимый элемент факторкольца $K[x] / (h)$ является делителем нуля.
+		
+		\begin{proof}
+			По определению $f + (h) \in K[x] / (h)$ является делителем нуля, если он не равен 0, и найдётся такой элемент $g + (h) \in K[x] / (h)$, что $(f + (h))(g + (h)) = 0 + (h)$.
+			
+			Рассмотрим ненулевой необратимый элемент факторкольца $K[x] / (h)$ вида $f + (h)$. Тк этот элемент ненулевой, то он не принадлежит $(h)$, а значит не делится на $h$. Покажем, что НОД$(f, h) \ne 1$. Пусть НОД$(f, h) = 1$, тогда $\exists u, x \in K[x]: uf + vh = 1 \Rightarrow uf + vh + (h) = 1 + (h) = (uf + (h)) + (vh + (h)) = (uf + (h)) + (0 + (h)) = uf + (h) = (u + (h))(f + (h)) \Rightarrow f + (h)$ обратим $\Rightarrow$ противоречие. Значит НОД$(f, h) \ne 1$.  
+			
+			Пусть НОД$(f, h) = d \ne 1$. Тогда $\exists a, b \in K[x]: f = a \cdot d, \ h = b \cdot d $, при этом $a \ne 0, b \ne 0$, тк иначе $f = 0, h = 0 \Rightarrow \text{deg} \ f < 0, \text{deg} \ g < 0$, что невозможно. Рассмотрим $b + (h) \in K[x] / (h)$. Если $b$ делится на $h$, то из $h = b \cdot d$ следует, что $d = 1 \Rightarrow$ противоречие, а значит $b$ не делится на $h \Rightarrow b + (h)  \ne 0$. Тогда $(f + (h))(b + (h)) = fb + (h) = 
+			a \cdot d\cdot b + (h) = a h + (h) = 0 + (h) \Rightarrow f + (h)$ - это делитель нуля.
+		\end{proof}
+ 	
+	
+\end{document}
