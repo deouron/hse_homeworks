@@ -1,0 +1,221 @@
+\documentclass[a4paper, 16pt]{article}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage[russian, english]{babel}
+\usepackage{subfiles}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage{ucs}
+\usepackage{textcomp}
+\usepackage{array}
+\usepackage{indentfirst}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage[margin=1.2cm]{geometry}
+\usepackage{authblk}
+\usepackage{tikz}
+\usepackage{icomma}
+\usepackage{gensymb}
+\usepackage{graphicx}
+
+\newcommand{\dropsign}[1]{\smash{\llap{\raisebox{-.5\normalbaselineskip}{$#1$\hspace{2\arraycolsep}}}}}%
+
+\DeclareGraphicsExtensions{,.png,.jpg}
+
+\DeclareMathOperator*\lowlim{\underline{lim}}
+\DeclareMathOperator*\uplim{\overline{lim}}
+
+\graphicspath{{pictures/}}
+
+\renewcommand{\baselinestretch}{1.4}
+
+\renewcommand{\C}{\mathbb{C}}
+\newcommand{\N} {\mathbb{N}}
+\newcommand{\Q} {\mathbb{Q}}
+\newcommand{\Z} {\mathbb{Z}}
+\newcommand{\R} {\mathbb{R}}
+\newcommand{\ord} {\mathop{\rm ord}}
+\newcommand{\Ima}{\mathop{\rm Im}}
+\newcommand{\rk}{\mathop{\rm rk}}
+
+\renewcommand{\r}{\right}
+\renewcommand{\l}{\left}
+\renewcommand{\inf}{\infty}
+\newcommand{\Sum}[2]{\overset{#2}{\underset{#1}{\sum}}}
+\newcommand{\Lim}[2]{\lim\limits_{#1 \rightarrow #2}}
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+
+\newcommand{\task}[1] {\noindent \textbf{Задача #1.} \hfill}
+\newcommand{\note}[1] {\noindent \textbf{Примечание #1.} \hfill}
+\newenvironment{proof}[1][Доказательство]{%
+	\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1:}]
+		\item \hspace{14pt}
+	}{
+		$ \hfill\blacksquare $
+	\end{trivlist}
+	\hfill\break
+}
+\newenvironment{solution}[1][Решение]{%
+	\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1:}]
+		\item \hspace{15pt}
+	}{
+	\end{trivlist}
+}
+
+\newenvironment{answer}[1][Ответ]{%
+	\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1:}] \hskip \labelsep
+	}{
+	\end{trivlist}
+	\hfill
+}
+
+\title{Алгебра} 
+\date{\today}
+\author{Сидоров Дмитрий}
+\affil{Группа БПМИ 219}
+
+
+\begin{document}
+	\maketitle
+	
+	\section*{№1}
+	
+		Избавьтесь от иррациональности в знаменателе дроби 
+		$\frac{3 - 63\sqrt[3]{7} - 8 \sqrt[3]{49}}{1 - 2 \sqrt[3]{7} - 4\sqrt[3]{49}}$ и упростите
+		полученное выражение.
+		
+		\begin{solution}
+			Обозначим $\alpha = \sqrt[3]{7}  \ (\alpha^3 = 7), f(\alpha) = 3 - 63\sqrt[3]{7} - 8 \sqrt[3]{49}, g(\alpha) = 1 - 2 \sqrt[3]{7} - 4\sqrt[3]{49} \Rightarrow 
+			\frac{3 - 63\sqrt[3]{7} - 8 \sqrt[3]{49}}{1 - 2 \sqrt[3]{7} - 4\sqrt[3]{49}} = \frac{f(\alpha)}{g(\alpha)} \in \Q(\alpha)$. Тогда, тк $[\Q(a) : \Q] = 3$ (доказано на семинаре, что если $\alpha$ - действительный корень уравнения $x^3 = a \ (a \in \Q)$, то $[\Q(\alpha) : \Q] = 1$, если $a$ - куб рационального числа, и $[\Q(\alpha) : \Q] = 3$ иначе), то каждый элемент $\Q(\alpha)$ можно единственным образом представить в виде $a_0 \cdot 1 + a_1 \cdot \sqrt[3]{7} + a_2 \cdot \sqrt[3]{49}$. Значит $\frac{3 - 63\sqrt[3]{7} - 8 \sqrt[3]{49}}{1 - 2 \sqrt[3]{7} - 4\sqrt[3]{49}} = a_0 \cdot 1 + a_1 \cdot \sqrt[3]{7} + a_2 \cdot \sqrt[3]{49} \Rightarrow 3 - 63\sqrt[3]{7} - 8 \sqrt[3]{49} = (1 - 2 \sqrt[3]{7} - 4\sqrt[3]{49})(a_0 + a_1 \cdot \sqrt[3]{7} + a_2 \cdot \sqrt[3]{49}) = a_0 - 2\sqrt[3]{7}a_0 - 4\sqrt[3]{49}a_0 + a_1\sqrt[3]{7} - a_1 \cdot 2\sqrt[3]{49} - 28a_1 + a_2\sqrt[3]{49} - 14a_2 - 28a_2\sqrt[3]{7} = (a_0 -28a_1 - 14a_2) + \sqrt[3]{7}(-2a_0 + a_1 -28a_2) + \sqrt[3]{49}(-4a_0 - 2a_1 + a_2) \Rightarrow$
+			
+				$\begin{pmatrix}
+					1& -28 & -14 &3 \\
+					-2&  1& -28 &-63 \\
+					-4& -2 &  1&  -8\\
+				\end{pmatrix} \to 
+			\begin{pmatrix}
+				1& -28 & -14 &3 \\
+				0&  -55& -56 &-57 \\
+				0& -114 &  -55&  -4\\
+			\end{pmatrix} \to 
+			\begin{pmatrix}
+				1& -28 & -14 &3 \\
+				0&  -55& -56 &-57 \\
+				0& -4 &  57&  -110\\
+			\end{pmatrix} \to 
+			\begin{pmatrix}
+				1& -28 & -14 &3 \\
+				0&  1& -742 &1483 \\
+				0& -4 &  57&  110\\
+			\end{pmatrix} \to
+			\begin{pmatrix}
+				1& 0 & 20762 & 41527 \\
+				0&  1& -742 &1483 \\
+				0& 0 &  -2911&  -5822\\
+			\end{pmatrix} \to 
+		\begin{pmatrix}
+			1& 0 & 20762 & 41527 \\
+			0&  1& -742 &1483 \\
+			0& 0 &  1&  2\\
+		\end{pmatrix} \to 
+		\begin{pmatrix}
+			1& 0 & 0 & 3 \\
+			0&  1& 0 & -1 \\
+			0& 0 &  1&  2\\
+		\end{pmatrix} \Rightarrow \frac{3 - 63\sqrt[3]{7} - 8 \sqrt[3]{49}}{1 - 2 \sqrt[3]{7} - 4\sqrt[3]{49}} = 3 - \sqrt[3]{7} + 2\sqrt[3]{49} $
+		\end{solution}
+	
+		\begin{answer}
+			$\frac{3 - 63\sqrt[3]{7} - 8 \sqrt[3]{49}}{1 - 2 \sqrt[3]{7} - 4\sqrt[3]{49}} = 3 - \sqrt[3]{7} + 2\sqrt[3]{49} $
+		\end{answer}
+	
+	\section*{№2}
+	
+		Найдите минимальный многочлен для числа $\sqrt{6} - \sqrt{5}-1$ над $\Q$.
+		
+		\begin{solution}
+			Обозначим $\sqrt{6} - \sqrt{5}-1$ как $a$. Тогда  $\sqrt{6} - \sqrt{5}-1 = a \Rightarrow a + 1 = \sqrt{6} - \sqrt{5} \Rightarrow 
+			(a + 1)^2 = a^2 + 2a + 1 = (\sqrt{6} - \sqrt{5})^2 = 11 -2 \sqrt{30} \Rightarrow -2\sqrt{30} = a^2 + 2a - 10 \Rightarrow 120 = (a^2 + 2a - 10)^2 = a^4 + 4a^3 - 16a^2 - 40a+100 \Rightarrow a^4 + 4a^3 - 16a^2 - 40a - 20 = 0$. Значит многочлен $f = x^4 + 4x^3 - 16x^2 - 40x - 20 \in \Q[x]$ является аннулирующим, тк $f(a) = 0$. Теперь докажем, что найденный многочлен $f$ является минимальным. Для этого для расширения $\Q \subseteq \Q(a)$, тк $[\Q(a) : Q] = \text{deg}f_{\text{min}}$ (равно степени минимального многочлена) и $\text{deg}f = 4$, покажем, что $[\Q(a) : Q] = 4$. Для этого рассмотрим $\Q \subseteq \Q(\sqrt{5}) \subseteq \Q(\sqrt{5})(\sqrt{6})$. 
+			
+			Покажем, что 
+			$[\Q(\sqrt{5}) : \Q] = 2$. Пусть $[\Q(\sqrt{5}) : \Q] = 1$, тогда минимальный многочлен иметт степень 1, те имеет вид $g = ax + b, \ a, b \in \Q \Rightarrow g(\sqrt{5}) = a \sqrt{5} + b \Rightarrow a\sqrt{3} = -b \Rightarrow$ противоречие, тк правая часть является рациональным числом, а левая иррациональным. При этом существует минимальный многочлен, который имеет вторую степень ($x^2 - 5$), значит $[\Q(\sqrt{5}) : \Q] = 2$.
+			
+			Теперь покажем, что $[\Q(\sqrt{5})(\sqrt{6}) : \Q(\sqrt{5})] = 2$.
+			Существует многочлен ($x^2 - 6$) такой, что он имеет степень 2, и он является минимальным для $\sqrt{6}$ над $\Q(\sqrt{5})$.
+			Пусть существует многочлен степени 1, который обнуляет $\sqrt{6}$, тогда $\sqrt{6} \in \Q(\sqrt{5})$ и $\sqrt{6} = a\sqrt{5} + b, \ a, b \in \Q \Rightarrow 6 = 5a^2 + b^2 + 2ab\sqrt{5} \Rightarrow$ либо $a = 0$, либо $b = 0$ (тк иначе правая часть рациональна, а левая иррациональна). Но тогда либо $6 = 5a^2$, либо $6 = b^2$, оба уравнения не имеют решений в $\Q$. Таким образом, $[\Q(\sqrt{5})(\sqrt{6}) : \Q(\sqrt{5})] = 2$.
+			
+			Известно, что для произвольных конечных расширений полей $K \subseteq F \subseteq L$ выполняется $[L : K] = [L : F] \cdot [F : K]$, значит  $[\Q(\sqrt{5})(\sqrt{6}) : \Q] = [\Q(\sqrt{5})(\sqrt{6}) : \Q(\sqrt{5})] \cdot [\Q(\sqrt{5}) : \Q] = 2 \cdot 2 = 4$. Теперь докажем, что $\Q(a) = \Q(\sqrt{5})(\sqrt{6})$.
+			
+			1) $1, \sqrt{5}, \sqrt{6}, \sqrt{30}$ - базис векторного пространства $\Q(\sqrt{5})(\sqrt{6})$ над $\Q \Rightarrow$ тк $a \in \Q(\sqrt{5})(\sqrt{6})$, то $\Q(a) \subseteq \Q(\sqrt{5})(\sqrt{6})$
+			
+			2) Покажем, что базис $\Q(\sqrt{5})(\sqrt{6})$ лежит в $\Q(a)$. 
+			$a = \sqrt{6} - \sqrt{5} - 1 \in \Q(a) \Rightarrow 
+			a^2 =  (\sqrt{6} - \sqrt{5} - 1)^2 \in \Q(a)$ и при этом $(\sqrt{6} - \sqrt{5} - 1)^2 = 12-2\sqrt{30} - 2\sqrt{6} + 2\sqrt{5} = -2a + 10 -2\sqrt{30} \Rightarrow \sqrt{30} \in \Q(a)$. В том числе $\sqrt{30}a \in \Q(a) \Rightarrow 6\sqrt{5} - 5\sqrt{6} - \sqrt{30} \in \Q(a) \Rightarrow 6\sqrt{5} - 5\sqrt{6} = b\in \Q(a)$ (тк$ \sqrt{30} \in \Q(a)$). Тогда, тк $5a, 6a \in \Q(a)$ и $a + b \in \Q(a)$ (тк $a, b \in \Q(a)$), то $b + 5a \in \Q(a) \Rightarrow b + 5a = \sqrt{5} - 5 \in \Q(a) \Rightarrow \sqrt{5} \in \Q(a)$. Аналогично $b + 6a = \sqrt{6} - 6 \in \Q(a) \Rightarrow \sqrt{6} \in \Q(a)$. При этом, тк $Q \subseteq \Q(a)$ по построению $1 \in \Q(a)$ (в том числе для других целых чисел этот факт использовался ранее). Таким образом, $1, \sqrt{5}, \sqrt{6}, \sqrt{30}$ лежат в $\Q(a)$, а значит $\Q(\sqrt{5})(\sqrt{6}) \subseteq Q(a)$ (тк $1, \sqrt{5}, \sqrt{6}, \sqrt{30}$ - базис векторного пространства $\Q(\sqrt{5})(\sqrt{6})$ над $\Q$). 
+			
+			Таким образом, $\Q = \Q(\sqrt{5})(\sqrt{6})$, а значит $[\Q(a) : Q] = 4$. Итого, $f = x^4 + 4x^3 - 16x^2 - 40x - 20$ - искомый минимальный многочлен для числа $\sqrt{6} - \sqrt{5}-1$ над $\Q$.
+		\end{solution}
+	
+		\begin{answer}
+			$f = x^4 + 4x^3 - 16x^2 - 40x - 20$
+		\end{answer}
+	
+	\section*{№3}
+	
+		Постройте явно поле $\mathbb{F}_8$  и составьте для него таблицы сложения и умножения.
+		
+		\begin{solution}
+			Тк $ 8 = 2^3$, то в нашем случае для $\mathbb{F}_8 = \mathbb{F}_{p^n}  \ p = 2, n= 3$ ($p$ - простое, $n \in \N$). Тогда, чтобы построить поле $\mathbb{F}_8$ нужно взять неприводимый многочлен $f \in \Z_2[x]$, степень которого равна $n = 3$. Значит, можно взять многочлен $f = x^3 + x + 1$, тк для него $f(0) = 1 \ne 0, f(1) = 1 \ne 0$. Положим $\mathbb{F}_8 = \Z_2[x] / (f)$. Тогда $\mathbb{F}_8$  состоит из всех многочленов в  $ \Z_2[x] / (f)$, степень которых меньше 3, те $\mathbb{F}_8 = \{\bar{0},\:\bar{1},\:\bar{x},\:\bar{x}+\bar{1},\:\bar{x}^2,\:\bar{x}^2+\bar{1},\:\bar{x}^2+\bar{x},\:\bar{x}^2+\bar{x}+\bar{1}\}$. 
+			
+			Таблицы сложения и умножения для этого поля см в конце документа (обе операции коммутативны в поле, те таблицы симметричны относительно главной диагонали, а так же для умножения используем факт, что $x^3 = -x-1 = x+1$).
+		
+		\end{solution}
+	
+	\section*{№4}
+	
+		Пусть $K \subseteq F$ - расширение полей и $\alpha \in F$. Положим $K[\alpha] = \{f(\alpha) \ | \ f \in K[x]\}$. Докажите, что если $K[\alpha]$ конечномерно как векторное пространство над $K$, то
+		$K[\alpha] = K(\alpha)$.
+		
+		\begin{proof}
+			Пусть $\text{dim}K[\alpha] = n < \inf$ (по условию $K[\alpha]$ конечномерно как векторное пространство над $K$). Тогда 
+			векторы $1, \alpha, \dots, \alpha^n$ линейно завсимы, тк их $n + 1 > n$ штук. Таким образом, существует $i$ такой, что линейная комбинация $a_0 + a_1 \alpha + \dots + a_n\alpha^n = 0$ при $a_i \ne 0, \ a_i \in K \Rightarrow \alpha - $ это корень многочлена $f = a_0 + a_1 \alpha + \dots + a_n\alpha^n$ в поле $F$, а значит $\alpha$ является алгебраическим над $K$. При этом элементы $K[\alpha]$ имеют вид $a_0 + a_1 \alpha + \dots + a_n\alpha^n \ (a_i \in K)$ и $\alpha^j \in K(\alpha), 1 \leq j \leq n \Rightarrow a_0 + a_1 \alpha + \dots + a_n\alpha^n  \in K(\alpha) \Rightarrow K[\alpha] \subseteq K(\alpha)$.
+			
+			Известно, что если $K \subseteq F$ - расширение полей и $\alpha \in F$ - элемент, алгебраический над $K$ и $h$ - его минимальный многочлен, то $K(\alpha)$ - пересечение всех подполей $F$, содержащих $K$ и $\alpha$, значит $K(\alpha)$ - наименьшее поле, содержащее $K$ и $\alpha$. Докажем, что $K[\alpha]$ - поле (тогда, тк $K[\alpha]$ содержит $K$ и $\alpha$ и $K[\alpha] \subseteq K(\alpha)$, $K(\alpha) = K[\alpha]$). Пусть $h \in K[x]$ - минимальный многочлен $\alpha$, тогда $h(\alpha) = 0$, и по лемме из лекции $h$ неприводим над $K$. По определению поле - коммутативное в кольцо, в котором $0 \ne 1$ и всякий ненулевой элемент обратим. В $K[\alpha]$ $0 \ne 1$, тк $K$ - поле. Докажем, что всякий ненулевой элемент в $K[\alpha]$ обратим. Рассмотрим многочлен $f \in K[x]$, для которого выполняется $f(\alpha) \ne 0$. Тогда по лемме из лекции получаем, что $f$ не делится на $h$ (тк иначе $f(\alpha) = 0$). При этом, тк $h$ неприводим, он не делится  на $f$. Таким образом, их НОД равен 1, а значит $\exists u, v \in K[x]: 
+			uh + vf = 1 \Rightarrow u(\alpha)h(\alpha) + v(\alpha)f(\alpha) = 1 \Rightarrow v(\alpha)f(\alpha) = 1$, тк $h(\alpha) = 0 \Rightarrow$
+			$f(\alpha)$ обратим, а значит всякий ненулевой элемент в $K[\alpha]$ обратим, и $K[\alpha]$ является полем. Таким образом, $K[\alpha] = K(\alpha)$.
+		\end{proof}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+\end{document}
