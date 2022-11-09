@@ -1,0 +1,210 @@
+\documentclass[a4paper, 16pt]{article}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage[russian, english]{babel}
+\usepackage{subfiles}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage{ucs}
+\usepackage{textcomp}
+\usepackage{array}
+\usepackage{indentfirst}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage[margin=1.2cm]{geometry}
+\usepackage{authblk}
+\usepackage{tikz}
+\usepackage{icomma}
+\usepackage{gensymb}
+\usepackage{graphicx}
+
+\DeclareGraphicsExtensions{,.png,.jpg}
+
+\DeclareMathOperator*\lowlim{\underline{lim}}
+\DeclareMathOperator*\uplim{\overline{lim}}
+
+\graphicspath{{pictures/}}
+
+\renewcommand{\baselinestretch}{1.4}
+
+\renewcommand{\C}{\mathbb{C}}
+\newcommand{\N} {\mathbb{N}}
+\newcommand{\Q} {\mathbb{Q}}
+\newcommand{\Z} {\mathbb{Z}}
+\newcommand{\R} {\mathbb{R}}
+\newcommand{\ord} {\mathop{\rm ord}}
+\newcommand{\Ima}{\mathop{\rm Im}}
+\newcommand{\rk}{\mathop{\rm rk}}
+
+\renewcommand{\r}{\right}
+\renewcommand{\l}{\left}
+\renewcommand{\inf}{\infty}
+\newcommand{\Sum}[2]{\overset{#2}{\underset{#1}{\sum}}}
+\newcommand{\Lim}[2]{\lim\limits_{#1 \rightarrow #2}}
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+
+\newcommand{\task}[1] {\noindent \textbf{Задача #1.} \hfill}
+\newcommand{\note}[1] {\noindent \textbf{Примечание #1.} \hfill}
+\newenvironment{proof}[1][Доказательство]{%
+	\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1:}]
+		\item \hspace{14pt}
+	}{
+		$ \hfill\blacksquare $
+	\end{trivlist}
+	\hfill\break
+}
+\newenvironment{solution}[1][Решение]{%
+	\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1:}]
+		\item \hspace{15pt}
+	}{
+	\end{trivlist}
+}
+
+\newenvironment{answer}[1][Ответ]{%
+	\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1:}] \hskip \labelsep
+	}{
+	\end{trivlist}
+	\hfill
+}
+
+\title{Алгебра} 
+\date{\today}
+\author{Сидоров Дмитрий}
+\affil{Группа БПМИ 219}
+
+
+\begin{document}
+	\maketitle
+	
+	\section*{№1}
+	
+	Пусть $G$ - группа всех невырожденных нижнетреугольных $(2 \times 2)$-матриц с коэффициентами из $\R$. Докажите, что все содержащиеся в $G$ матрицы вида
+	$ \begin{pmatrix}
+		1 & 0 \\
+		* & * \\
+	\end{pmatrix}$ образуют нормальную подгруппу в $G$.
+
+	\begin{proof}
+									Обозначим все содержащиеся в $G$ матрицы вида
+									$ \begin{pmatrix}
+										1 & 0 \\
+										* & * \\
+									\end{pmatrix}$ как подгруппу $H$ (образуют подгруппу, тк $e \in H$, $\begin{pmatrix}
+									1& 0 \\
+									*& * \\
+								\end{pmatrix}
+							\begin{pmatrix}
+							1 & 0 \\
+							*& * \\
+							\end{pmatrix}  = \begin{pmatrix}
+							1 & 0 \\
+							*&  *\\
+							\end{pmatrix}$, те если $a, b \in H$, то $ab \in H$ и $\forall a = \begin{pmatrix}
+							1 & 0 \\
+							a& b \\
+							\end{pmatrix} \in H \ \ a^{-1} = \
+							\begin{pmatrix} 
+							\frac{b}{b} & 0 \\
+							-\frac{a}{b}& \frac{1}{b} \\
+							\end{pmatrix} = 
+							\begin{pmatrix}
+							1 & 0 \\
+							*& * \\
+							\end{pmatrix}  \in H$). По определению подгруппа $H \subseteq G$ называется нормальной, если  $ghg^{-1} \in H \ \ \forall g \in G, \forall h \in H$. Тк   $G$ - группа всех невырожденных нижнетреугольных $(2 \times 2)$-матриц с коэффициентами из $\R$, то $g = \begin{pmatrix}
+										a & 0 \\
+										b & c \\
+									\end{pmatrix}, a, b, c \in \R, \\ \det  g = a \cdot c \ne 0$, и тогда $g^{-1} = \frac{1}{ac}
+								\begin{pmatrix}
+									c & 0 \\
+									-b & a \\
+								\end{pmatrix}$. При этом $h = 
+								\begin{pmatrix}
+									1 & 0 \\
+									x & y \\
+								\end{pmatrix}, x, y \in R$. Тогда $ghg^{-1} = \frac{1}{ac}\begin{pmatrix}
+								a & 0 \\
+								b & c \\
+							\end{pmatrix} \begin{pmatrix}
+							1 & 0 \\
+							x & y \\
+							\end{pmatrix}\begin{pmatrix}
+							c & 0\\
+							-b & a \\
+							\end{pmatrix} = \frac{1}{ac}
+							\begin{pmatrix}
+								a & 0 \\
+								b + cx & yc \\
+							\end{pmatrix} \begin{pmatrix}
+							c & 0 \\
+							-b & a \\
+							\end{pmatrix} = \frac{1}{ac} 
+							\begin{pmatrix}
+							ac & 0 \\
+							(b + cx)c - byc& yca \\
+							\end{pmatrix} = \begin{pmatrix}
+							1 & 0\\
+							* & * \\
+							\end{pmatrix} \in H \Rightarrow H \triangleleft  G$ 
+	\end{proof}
+
+\section*{№2}
+
+	Найдите все гомоморфизмы из группы $\Z_{15}$ в группу $\Z_{20}$.
+	
+	\begin{solution}
+		По определению $\varphi: G \to F$ - гомоморфизм, если $\varphi(ab) = \varphi(a) \cdot \varphi(b) \ \forall a, b, \in G$. Пусть $f : \Z_{15} \to \Z_{20}$ - гомоморфизм. Известно, что $\Z_{15}$ порождается 1, те $\Z_{15} = \langle \overline{1} \rangle$, тогда, если $f( \overline{1}) =  \overline{a}$, то $f( \overline{l}) = f( \overline{1} +  \overline{1} + \dots +  \overline{1})$ ($l$ раз) $ =  \overline{a} +  \overline{a} + \dots +  \overline{a}$ ($l$ раз, по свойству гомоморфизма) $= l \cdot \overline{ a}$, поэтому, чтобы задать гомоморфизм, нужно показать, куда может переходить 1. Тк $\text{ord} \overline{1} = 15$, то $\text{ord} f(\overline{1}) = \overline{a}$ является делителем 15. Найдём все элементы из $\Z_{20}$, порядок которых делит 15 . Это элементы $\overline{0}, 
+		\overline{4}, \overline{8}, \overline{12}, \overline{16}$. Проверим, что образуется гомоморфизм.
+		
+		1) $f(\overline{1}) = \overline{0} \Rightarrow f(\overline{l}) = \overline{0} \ \ \forall \overline{l} \in \Z_{15}$ - гомоморфизм
+		
+		2) $f(\overline{1}) = \overline{4} \Rightarrow f(\overline{l}) = \overline{4} \cdot \overline{l} \ \ \forall \overline{l} \in \Z_{15}$ - гомоморфизм (тк $f(\overline{l_1} + \overline{l_2}) = \overline{4}\ \overline{l_1} + \overline{4} \ \overline{l_2})) = f(\overline{l_1}) + f(\overline{l_2}))$
+		
+		Аналогично удовлетворяют $f(\overline{l}) = \overline{8} \cdot \overline{l}, f(\overline{l}) = \overline{12} \cdot \overline{l}, f(\overline{l}) = \overline{16} \cdot \overline{l} \ \ \forall \overline{l} \in \Z_{15}$ . 
+	\end{solution}
+
+	\begin{answer}
+	$f(\overline{l}) = \overline{0} , f(\overline{l}) = \overline{4} , f(\overline{l}) = \overline{8} \cdot \overline{l}, f(\overline{l}) = \overline{12} \cdot \overline{l}, f(\overline{l}) = \overline{16} \cdot \overline{l} \ \ \forall \overline{l} \in \Z_{15}$ . 
+	\end{answer}
+
+\section*{№3}
+
+	Пусть $H$ - подгруппа всех элементов конечного порядка в группе $(\C \backslash \{0\}, \times)$. Докажите, что $H \simeq \Q / \Z$, где группы $\Q$ и $\Z$ рассматриваются с операцией сложения.
+	
+	\begin{proof}
+		По теореме о гомоморфизме для групп $G / \text{Ker}\varphi \simeq \text{Im} \varphi$. Кроме того, по определению изоморфизм - гомоморфизм $\varphi: G \to F$, если $\varphi$ - биекция ($\varphi: G \to F$ - гомоморфизм, если $\varphi(ab) = \varphi(a) \cdot \varphi(b) \ \forall a, b, \in G$). Пусть $\varphi: Q \to \C \backslash \{0\}$ (будем рациональному $x$ сопоставлять $e^{2\pi i x}$, получим получим гомоморфизм из $Q$ с операцие сложения в $(\C \backslash \{0\}, \times)$). 
+		
+		Покажем, что $\text{Ker} \varphi$ совпадает с $\Z$. Если $x \in \text{Ker} \varphi$, то $e^{2\pi ix} = \cos (2\pi x) + i \sin (2 \pi x) = 1 \Rightarrow x \in \Z$.
+		
+		Покажем, что $\text{Im} \varphi$ совпадает с $H$. Пусть $q \in \Q$, тогда $q = \frac{m}{n}, \ m \in \Z, n \in \N$. Тогда, если каждому рациональному числу $x$ сопоставляется комплексное число $e^{2\pi i x}$, то $q$ сопоставляется число $e^{2 \pi i \frac{m}{n}}$, значит, тк $(e^{2 \pi i \frac{m}{n}})^n = 1$, то любой элемент образа имеет конечный порядок. Если же $h \in H$, те $h$ - элемент конечного порядка в группе $(\C \backslash \{0\}, \times)$, то для некоторого $n \in \N$ $h^n = 1$, а значит $h = e^{2 \pi i \frac{k}{n}}, \ 0 \leq k < n$ (формула корня $n$-ой степени из 1). Таким образом, $\text{Im} \varphi$ совпадает с $H$.
+		
+		Итого, $\text{Ker} \varphi$ совпадает с $\Z$, $\text{Im} \varphi$ совпадает с $H$, а значит по теореме о гомоморфизме для групп $H \simeq \Q / \Z$. 
+	\end{proof}
+
+\section*{№4}
+
+	Пусть $m, n \in \N$. Докажите что следующие условия эквивалентны:
+	
+	1) $m, n$ взаимно просты
+	
+	2) для всякой группы $G$, всякой подгруппы $A \subseteq  G$ порядка $m$ и всякой подгруппы $B \subseteq G$ порядка $n$ выполняется условие $A \cap B = \{e\}$.
+	
+	\begin{proof}
+		Докажем, что 2) следует из 1). Если порядок $A$ равен $m$, а порядок $B$ равен $n$, то для $x \in A \cap B$ выполняется $x^m = x^n = \{e\} \Rightarrow x = \{e\}$, если $m, n$ взаимно просты.
+		
+		Теперь докажем, что 1) следует из 2). Пусть $m, n$ не взаимно просты и НОД($m, n$) $\ne$ 1. Пусть $G$ - циклическая группа с порядком $mn$, $x$ - образующий элемент. Тогда, если взять подгруппу $A = \langle x^n \rangle$ (порядок равен $m$) и  подгруппу $B = \langle x^m \rangle$ (порядок равен $n$), то  $A \cap B = \langle x^{\text{НОК}(m, n)} \rangle$ (порядок равен НОД($m, n$) $\ne$ 1, тк $\text{НОК}(m, n) \cdot \text{НОД}(m, n) = mn$) $\Rightarrow$ не выполняется условие $A \cap B = \{e\}$. Значит 2) не выполняется для всякой группы $G$ и всяких подгрупп $A \subseteq  G$ и $B \subseteq G$ с порядками $m, n$ соотв. Таким образом, если $\overline{1} \to \overline{2}$, то $2\to1$.
+		
+		Таким образом, если 1) следует из 2) и 2) следует из 1), то 1) и 2) эквивалентны.
+	\end{proof}
+	
+	
+	
+	
+	
+	
+	
+\end{document}
