@@ -1,0 +1,202 @@
+\documentclass[a4paper, 16pt]{article}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage[russian, english]{babel}
+\usepackage{subfiles}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage{ucs}
+\usepackage{textcomp}
+\usepackage{array}
+\usepackage{indentfirst}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage[margin=1.2cm]{geometry}
+\usepackage{authblk}
+\usepackage{tikz}
+\usepackage{icomma}
+\usepackage{gensymb}
+\usepackage{graphicx}
+
+\newcommand{\dropsign}[1]{\smash{\llap{\raisebox{-.5\normalbaselineskip}{$#1$\hspace{2\arraycolsep}}}}}%
+
+\DeclareGraphicsExtensions{,.png,.jpg}
+
+\DeclareMathOperator*\lowlim{\underline{lim}}
+\DeclareMathOperator*\uplim{\overline{lim}}
+
+\graphicspath{{pictures/}}
+
+\renewcommand{\baselinestretch}{1.4}
+
+\renewcommand{\C}{\mathbb{C}}
+\newcommand{\N} {\mathbb{N}}
+\newcommand{\Q} {\mathbb{Q}}
+\newcommand{\Z} {\mathbb{Z}}
+\newcommand{\R} {\mathbb{R}}
+\newcommand{\ord} {\mathop{\rm ord}}
+\newcommand{\Ima}{\mathop{\rm Im}}
+\newcommand{\rk}{\mathop{\rm rk}}
+
+\renewcommand{\r}{\right}
+\renewcommand{\l}{\left}
+\renewcommand{\inf}{\infty}
+\newcommand{\Sum}[2]{\overset{#2}{\underset{#1}{\sum}}}
+\newcommand{\Lim}[2]{\lim\limits_{#1 \rightarrow #2}}
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+
+\newcommand{\task}[1] {\noindent \textbf{Задача #1.} \hfill}
+\newcommand{\note}[1] {\noindent \textbf{Примечание #1.} \hfill}
+\newenvironment{proof}[1][Доказательство]{%
+	\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1:}]
+		\item \hspace{14pt}
+	}{
+		$ \hfill\blacksquare $
+	\end{trivlist}
+	\hfill\break
+}
+\newenvironment{solution}[1][Решение]{%
+	\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1:}]
+		\item \hspace{15pt}
+	}{
+	\end{trivlist}
+}
+
+\newenvironment{answer}[1][Ответ]{%
+	\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1:}] \hskip \labelsep
+	}{
+	\end{trivlist}
+	\hfill
+}
+
+\title{Алгебра} 
+\date{\today}
+\author{Сидоров Дмитрий}
+\affil{Группа БПМИ 219}
+
+
+\begin{document}
+	\maketitle
+	
+	\section*{№1}
+	
+		Определите все значения параметра $b \in \R$, при которых многочлен $f = x^3y+bxy^3z^2$ принадлежит идеалу $I = (x^2+2y^2, xz-y)$ кольца $\R[x, y, z]$.
+		
+		\begin{solution}
+			Чтобы определить, принадлежит ли идеалу многочлен, необходимо найти в идеале базис Грёбнера (используя алгоритм Бухбергера), и, если остаток многочлена относительно найденного базиса равен 0, то многочлен принадлежит идеалу. Найдём в $I$ базис Грёбнера. Обозначим $f_1 = x^2+2y^2, f_2 = xz-y$, тогда $L(f_1) = x^2, L(f_2) = xz \Rightarrow \text{НОК}(L(f_1), L(f_2)) = x^2z \Rightarrow
+			S(f_1, f_2) = zx^2 + 2zy^2 - x^2z + yx = 2zy^2 + yx = f_3$. Заметим, что $f_3$ нередуцируем относительно $f_1$ и $f_2$, поэтому его нужно добавить в систему (по алгоритму Бухбергера). $L(f_3) = xy \Rightarrow \\
+			\text{НОК}(L(f_1), L(f_3)) = x^2y \Rightarrow
+			S(f_1, f_3) = 2y^3 - 2xy^2z \stackrel{f_2 \cdot -2y^2}{\to} 0$.
+			$	\text{НОК}(L(f_2), L(f_3)) = xyz \Rightarrow S(f_2, f_3) = -y^2 - 2y^2z^2 = f_4$. Заметим, что $f_4$ нередуцируем относительно $f_1, f_2, f_3$, поэтому его нужно добавить в систему (по алгоритму Бухбергера). $L(f_4) = -2y^2z^2$. Известно, что если страшие члены многочленов $x, y$ взаимно просты, то $S(x, y)$ редуцируется к 0 относительно $x, y$. Заметим, что $L(f_4)$ попарно прост с $L(f_1), L(f_2), L(f_3)$, а значит $S(f_1, f_4), S(f_2, f_4), S(f_3, f_4)$  редуцируются к 0 относительно $f_1, f_4; f_2, f_4; f_3, f_4$  соотв.
+			 Таким образом, $\{f_1, f_2, f_3, f_4\} = \{x^2+2y^2, xz-y, 2zy^2 + yx, -y^2-2y^2z^2\} - $ система Грёбнера идела $I$. Теперь найдём все значения параметра $b \in \R$, при которых многочлен $f = x^3y+bxy^3z^2$ принадлежит идеалу $I$. $f = x^3y+bxy^3z^2 \stackrel{f_1 \cdot xy}{\to} bxy^3z^2 - 2xy^3 \stackrel{f_4 \cdot 2xy}{\to}bxy^3z^2 + 4xy^3z^2$. Заметим, что при $b = -4$ $f$ редуцируется к 0 относительно системы Грёбнера идела $I$, те тогда $f$ принадлежит $I$. Пусть $b\ne -4$. 
+			 %$bxy^3z^2 + 2xy^3z^2 \stackrel{f_3 \cdot 2y^2z^2}{\to} bxy^3z^2 -4y^4z^3 \stackrel{f_2 \cdot by^3z}{\to}  by^4z - 4y^4z^3 \stackrel{f_4 \cdot 2y^2z}{\to} by^4z+2y^4z$
+			 $bxy^3z^2 + 4xy^3z^2 \stackrel{f_2 \cdot 4y^3z}{\to} bxy^3z^2 + 4y^4z \stackrel{f_2 \cdot by^3z}{\to} 4y^4z + by^4z$
+			 . Заметим, что $by^4z, 4y^4z$ не делятся на $L(f_1), L(f_2), L(f_3), L(f_4)$, а значит $by^4z+4y^4z$ нередуцируем к 0 относительно $\{f_1, f_2, f_3, f_4\}$ при $b \ne -4$. Таким образом, многочлен $f = x^3y+bxy^3z^2$ принадлежит идеалу $I = (x^2+2y^2, xz-y)$ кольца $\R[x, y, z]$ только при $b = -4$.
+		\end{solution}
+	
+		\begin{answer}
+			при $b = -4$
+		\end{answer}
+	
+	\section*{№2}
+	
+		Найдите минимальный редуцированный базис Грёбнера в идеале $(xy+2yz, x-y^2, yz^2-y) \subseteq \R[x, y, z]$ относительно лексикографического порядка, задаваемого условием $z > x > y$.
+		
+		\begin{solution}
+			Обозначим $f_1 = xy+2yz, f_2 = x-y^2, f_3 = yz^2-y$. Построим с помощью алгоритма Бухбергера произвольный базис Грёбнера в идеале, а потом преобразуем его в  минимальный редуцированный базис Грёбнера в идеале. \\ $L(f_1) = 2yz, L(f_2) = x, L(f_3) = yz^2$. Заметим, что $L(f_1)$ и $L(f_2)$, $L(f_3)$ и $L(f_2)$ вхаимно просты, а значит $S(f_1, f_2), S(f_2, f_3)$ редуцируемы к нулю относительно $f_1, f_2$ и $f_2, f_3$ соотв. $\text{НОК}(f_1, f_3) = 2yz^2 \Rightarrow  \\
+			S(f_1, f_3) = xyz+2yz^2 - 2yz^2 + 2y = xyz + 2y \stackrel{f_1 \cdot 0.5x}{\to} 2y - 0.5x^2y \stackrel{f_2 \cdot 0.5xy}{\to} 2y-0.5xy^3
+			\stackrel{f_2 \cdot -0.5y^3}{\to} 2y-0.5y^5$. Заметим, что $2y-0.5y^5$ нередуцируем относительно $f_1, f_2, f_3$, тогда добавим $f_4 = -4y+y^5 $ (можно домножить на -2, тк $2y-0.5y^5$ - остаток) в систему. $L(f_4) = y^5 \Rightarrow L(f_4)$ взаимно прост с $L(f_2) \Rightarrow S(f_2, f_4)$ редуцируем к 0 относительно $f_2, f_4$. $\text{НОК}(L(f_1), L(f_4)) = 2y^5z \Rightarrow S(f_1, f_4) = xy^5 + 8zy \stackrel{f_1 \cdot 4}{rel\to} xy^5 - 4xy \stackrel{f_4 \cdot x}{\to}
+			-4xy + 4xy = 0$. \\
+			$\text{НОК}(L(f_3), L(f_4)) = y^5z^2 \Rightarrow S(f_3, f_4) = 
+			-y^5 +4z^2y \stackrel{f_3 \cdot 4}{\to} -y^5 + 4y \stackrel{-f_4}{\to} 0$. \\ Таким образом, $\{f_1, f_2, f_3, f_4\} = 
+			\{xy+2yz,x-y^2,  yz^2-y,-4y+y^5 \} $ - базис Грёбнера в идеале.
+			
+			По определению базис Грёбнера $F$ идеала $I \subseteq R$ называет минимально редуцированным, если: \\ 1) для любых двух различных многочленов $f_1, f_2 \in F$ никакой одночлен в $f_1$ не делится на $L(f_2)$ \\ 2) старшие коэффициенты всех многочленов из $F$ равны 1. \\
+			Тк $L(f_3) = yz^2 \  \vdots \ 2yz = L(f_1)$, то $f_3$ нужно убрать из базиса. Так же для $f_1 = xy + 2yz$ $xy$ делится на $x = L(f_2)$, а значит $f_1$ следует заменить на $f_1 \stackrel{f_2 \cdot y}{\to} 2yz + y^3$ (для остальных условие 1 соблюдается).
+			Итого, получили новую систему $\{yz + 0.5y^3, x-y^2,-4y+y^5\}$. Теперь изменим базис так, чтобы выполнялось условие 2. Таким образом, $\{2yz + y^3, x-y^2,-4y+y^5\}$ - минимальный редуцированный базис Грёбнера в идеале $(xy+2yz, x-y^2, yz^2-y) \subseteq \R[x, y, z]$ относительно лексикографического порядка, задаваемого условием $z > x > y$.
+		\end{solution}
+	
+		\begin{answer}
+			$\{yz + 0.5y^3, x-y^2,-4y+y^5\}$
+		\end{answer}
+	
+	\section*{№3}
+	
+		Дан идеал  $I = (x^2y+ 2xz+ z^2, yz - 1) \subseteq \R[x, y, z]$. Найдите порождающую систему для идеала $I \cap \R[x, y]$ кольца $\R[x, y]$.
+		
+		\begin{solution}
+			Известно (№7 листа 7), что если $I \subseteq R$ - ненулевой идеал и $F$ - его базис Грёбнера, и так же $1 \leq k \leq n - 1$ и $R_k = K[x_{k + 1}, \dots, x_n]$, то множество $F \cap R_k$ является базисом Грёбнера идеала $I \cap R_k$ кольца $R_k$.
+			Введём лексикографический порядок $z > x > y$. Тогда с учётом первого факта получаем, что чтобы найти базис $I \cap \R[x, y]$ кольца $\R[x, y]$, нужно найти базис Грёбнера идеала $I$ в $R[z, x, y]$ (обозначим как $F$)  и пересечь его с $R[x, y]$. Чтобы найти базис Грёбнера применим алгоритм Бухбергера. Пусть $f_1 = x^2y+ 2xz+ z^2, f_2 = yz - 1$. 
+			$L(f_1) = z^2, L(f_2) = zy \Rightarrow \text{НОК}(L(f_1), L(f_2)) = z^2y \Rightarrow S(f_1, f_2) = x^2y^2 + 2zxy + z \ \stackrel{f_2 \cdot 2x}{\to} x^2y^2 + z + 2x = f_3$. Заметим, что $f_3$ нередуцируем относительно $\{f_1, f_2\} \Rightarrow$ добавим $f_3$ в базис. $L(f_3) = z$. $\text{НОК}(L(f_1), L(f_3)) = z^2 \Rightarrow S(f_1, f_3) = x^2y - x^2y^2z \stackrel{f_2 \cdot -x^2y}{\to} 0$. 
+			$\text{НОК}(L(f_2), L(f_3)) = zy \Rightarrow S(f_2, f_3) =
+			-1-x^2y^3-2xy =f_4$. Заметим, что $f_4$ нередуцируем относительно $\{f_1, f_2, f_3\} \Rightarrow$ добавим $f_4$ в базис. $L(f_4) = -x^2y^3$ - взаимно прост с $L(f_1), L(f_3) \Rightarrow S(f_1, f_4), S(f_3, f_4)$ редуцируются к нулю относительно $\{f_1, f_2, f_3, f_4\}$. $\text{НОК}(L(f_2), L(f_4)) = -x^2y^3z \Rightarrow S(f_2, f_4) = -x^2y^3z + x^2y^2 + z + x^2y^3z + 2xyz = x^2y^2 + z + 2xyz \stackrel{f_2 \cdot 2x}{\to}
+			x^2y^2 + z + 2x \stackrel{f_3}{\to} 0 \Rightarrow $ базис Грёбнера для $I$ в $R[z, x, y]$ - это $\{f_1, f_2, f_3, f_4\} = \\
+			\{x^2y+ 2xz+ z^2, yz - 1, x^2y^2 + z + 2x, -1-x^2y^3-2xy\} $. Найдём пересечение с $R[x, y]$ - это многочлены, которые зависят только от $x, y$, значит нам подходит только многочлен $f_4 = -1-x^2y^3-2xy  \Rightarrow I \cap \R[x, y] = (-1-x^2y^3-2xy)$.
+		\end{solution}
+	
+		\begin{answer}
+			$(-1-x^2y^3-2xy)$
+		\end{answer}
+	
+	\section*{№4}
+	
+		Найдите конечный базис Грёбнера (относительно стандартного лексикографического порядка, задаваемого условием $x > y > z$) для идеала $I$ кольца $\R[x, y, z]$, где $I = \{f \in \R[x, y, z] \ | \ 
+		f(a, a+ 1, a^2 - 2a) = 0 \ \forall a \in \R\}$.
+		
+		\begin{solution}
+			Заметим, что $f_1 = x - y + 1$ в точке $(a, a + 1, a^2 - 2a)$ равен $a - a - 1 + 1 = 0 \ \forall a \in \R \Rightarrow f_1 \in I$. Аналогично 
+			$f_2 = y^2 - z - 4y + 3$ в точке $(a, a + 1, a^2 - 2a)$ равен $a^2 + 2a + 1 - a^2 + 2a - 4a - 4 + 3 = 0 \ \forall a \in \R \Rightarrow f_2 \in I$. При этом $L(f_1) = x, L(f_2) = y^2 \Rightarrow L(f_1), L(f_2)$ взаимно просты $\Rightarrow S(f_1, f_2)$ редуцируется к нулю относительно $F = \{f_1, f_2\} \Rightarrow F$ - базис Грёбнера идела $(f_1, f_2)$. Теперь покажем, что этот идеал равен иделу $I$ из условия (обозначим $J = (f_1, f_2) \Rightarrow$ докажем, что $I = J$). 
+			
+			Заметим, что $I$ задан так, что любая комбинация многочленов из $I$ является многочленом из $I$ (каждый такой многочлен в точке $(a, a + 1, a^2 - 2a)$ равен 0, а значит комбинация этих многочленов равна 0 в точке $(a, a + 1, a^2 - 2a)$), значит, тк $f_1, f_2 \in I$ и $f_1, f_2$ - порождающая система в $J$, то $J \subseteq I$. 
+			
+			Теперь покажем, что $I \subseteq J$. Для этого рассмотрим произвольный $f \in I$ (нужно доказать, что тогда $f \in J$). Пусть $f = m_1f_1 + m_2f_2 + r$, где $r$ - некоторый остаток $f$ относительно $F$. Тогда $ r = f - m_1f_1 - m_2f_2$, и тк $f, f_1, f_2 \in I \Rightarrow f, m_1f_1, m_2f_2 \in I$, то $r \in I$. Значит $r(a, a+ 1, a^2 - 2a) = 0\ \forall a \in \R$. Тк $r$ - некоторый остаток $f$ относительно $F$, то $L(r)$ не делится на $L(f_1) = x$ и $L(f_2) = y^2 \Rightarrow$ %не зависит от $x$ и $L(r)$%
+			 либо $L(r) = z^k$, либо $L(r) = yz^k$ для некоторого $k \geq 0\in \Z$.
+			 
+			 1) Пусть $L(r) = z^k$. Тогда, тк $x > y > z$, $r$ зависит только от $z$, а значит, тк $r(a, a+ 1, a^2 - 2a) = 0\ \forall a \in \R$, то $r$ - многочлен от одной переменной, который имеет конечную степень, и в этой степени он равен 0 при любом $a \in \R$ (те имеет бесконечно много корней), а значит $r = 0 \Rightarrow f \in (f_1, f_2) \Rightarrow f \in J$.
+			 
+			  2) Пусть $L(r) = yz^k$. %Тк $f \in I$, то $f(a, a + 1, a^2 - 2a) = 0 \ \forall a \in \R$, при этом $r(a, a+ 1, a^2 - 2a) = 0\ \forall a \in \R$, и тк $r$ и $f_2$ не зависят от $x$, то $f$ делится на $f_2$, те $f = f_2 \cdot h$ ($h$ - некоторый многочлен) $\Rightarrow f \in J$.
+			  Заметим, что $f_2, r$ не зависят от $x$, а значит для любого $x$ выполняется \\$f_2(x, a+ 1, a^2 - 2a) = 0, \ r(x, a+ 1, a^2 - 2a) = 0$, тк $f_2, r \in I$. Значит $f(x, a+ 1, a^2 - 2a) = m_1f_1(x, a+ 1, a^2 - 2a) \forall x, a \Rightarrow f \in J$ (тк $f$ делится на $f_1$).
+			  
+			  Таким образом, $I \subseteq J \Rightarrow I = J \Rightarrow (f_1, f_2) - $ конечный базис Грёбнера для $I$.
+		\end{solution}
+	
+		\begin{answer}
+			$(x - y + 1, y^2 - z - 4y + 3)$
+		\end{answer}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+\end{document}
