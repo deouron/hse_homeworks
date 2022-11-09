@@ -1,0 +1,273 @@
+\documentclass[a4paper, 16pt]{article}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage[russian, english]{babel}
+\usepackage{subfiles}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage{ucs}
+\usepackage{textcomp}
+\usepackage{array}
+\usepackage{indentfirst}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage[margin=1.2cm]{geometry}
+\usepackage{authblk}
+\usepackage{tikz}
+\usepackage{icomma}
+\usepackage{gensymb}
+\usepackage{graphicx}
+
+\DeclareGraphicsExtensions{,.png,.jpg}
+
+\DeclareMathOperator*\lowlim{\underline{lim}}
+\DeclareMathOperator*\uplim{\overline{lim}}
+
+\graphicspath{{pictures/}}
+
+\renewcommand{\baselinestretch}{1.4}
+
+\renewcommand{\C}{\mathbb{C}}
+\newcommand{\N} {\mathbb{N}}
+\newcommand{\Q} {\mathbb{Q}}
+\newcommand{\Z} {\mathbb{Z}}
+\newcommand{\R} {\mathbb{R}}
+\newcommand{\ord} {\mathop{\rm ord}}
+\newcommand{\Ima}{\mathop{\rm Im}}
+\newcommand{\rk}{\mathop{\rm rk}}
+
+\renewcommand{\r}{\right}
+\renewcommand{\l}{\left}
+\renewcommand{\inf}{\infty}
+\newcommand{\Sum}[2]{\overset{#2}{\underset{#1}{\sum}}}
+\newcommand{\Lim}[2]{\lim\limits_{#1 \rightarrow #2}}
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+
+\newcommand{\task}[1] {\noindent \textbf{Задача #1.} \hfill}
+\newcommand{\note}[1] {\noindent \textbf{Примечание #1.} \hfill}
+\newenvironment{proof}[1][Доказательство]{%
+	\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1:}]
+		\item \hspace{14pt}
+	}{
+		$ \hfill\blacksquare $
+	\end{trivlist}
+	\hfill\break
+}
+\newenvironment{solution}[1][Решение]{%
+	\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1:}]
+		\item \hspace{15pt}
+	}{
+	\end{trivlist}
+}
+
+\newenvironment{answer}[1][Ответ]{%
+	\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1:}] \hskip \labelsep
+	}{
+	\end{trivlist}
+	\hfill
+}
+
+\title{Алгебра} 
+\date{\today}
+\author{Сидоров Дмитрий}
+\affil{Группа БПМИ 219}
+
+
+\begin{document}
+	\maketitle
+	
+	\section*{№1}
+	
+		Найдите все обратимые элементы, все делители нуля (левые и правые) и все нильпотентные элементы в кольце $R = \{ \begin{pmatrix}
+			a & 0 \\
+			b & c \\
+		\end{pmatrix} | \ a, b, c \in \Q\}$ с обычными оперциями сложения и умножения.
+	
+		\begin{solution}
+			1) По определению $x \in R$ - обратный элемент, если существует такой $y \in R$, что $xy = yx =\begin{pmatrix}
+				1 & 0 \\
+				0 & 1 \\
+			\end{pmatrix}$ (единица в кольце $R$ - это единичная матрица $2 \times 2$) $ \Rightarrow$ обратные элементы в кольце $R$ имеют вид $\frac{1}{ac} \begin{pmatrix}
+			c & 0 \\
+			-b & a \\
+		\end{pmatrix} =  \begin{pmatrix}
+		\frac{1}{a} & 0 \\
+		-\frac{b}{ac} & \frac{1}{c} \\
+		\end{pmatrix} \in R$, при $ac\ne0$ (тк $\frac{1}{a} \in \Q, -\frac{b}{ac} \in \Q, \frac{1}{c} \in \Q, 0 = 0 \Rightarrow \begin{pmatrix}
+		\frac{1}{a} & 0 \\
+		-\frac{b}{ac} & \frac{1}{c} \\
+		\end{pmatrix} \in R,$ где $a, b, c \in \Q$ и $\begin{pmatrix}
+		\frac{1}{a} & 0 \\
+		-\frac{b}{ac} & \frac{1}{c} \\
+			\end{pmatrix} \begin{pmatrix}
+			a & 0 \\
+			b & c \\
+		\end{pmatrix}  = \begin{pmatrix}
+		a & 0 \\
+		b & c \\
+		\end{pmatrix} \begin{pmatrix}
+		\frac{1}{a} & 0 \\
+		-\frac{b}{ac} & \frac{1}{c} \\
+		\end{pmatrix} = \begin{pmatrix}
+		1 & 0 \\
+		0 & 1 \\
+		\end{pmatrix} $).
+	
+	
+			\	
+	
+		2) По определению $x \in R$ - левый (правый) делитель нуля, если $x \ne 0$ и найдётся элемент $y \in R, \ y \ne 0$, такой что $xy=0$ ($yx = 0$).  Рассмотрим матрицы $x_1 = \begin{pmatrix}
+			a & 0 \\
+			b & c \\
+		\end{pmatrix}, \ a, b, c \in \Q$ и $x_2 = \begin{pmatrix}
+		m & 0 \\
+		n & k \\
+			\end{pmatrix}, \ m, n, k \in \Q$, и $a, b, c$ одновременно не равны 0, и $m, n, k$ одновременно не равны 0 ($x_1, x_2 \in R$). Тогда, если $x_1x_2 = 0$, то $\begin{pmatrix}
+			a & 0 \\
+			b & c \\
+		\end{pmatrix}\begin{pmatrix}
+			m & 0 \\
+			n & k \\
+		\end{pmatrix} = \begin{pmatrix}
+			am & 0 \\
+		bm+cn & ck \\
+				\end{pmatrix} = \begin{pmatrix}
+			0 & 0 \\
+		0 & 0 \\
+		\end{pmatrix} \Rightarrow \begin{cases}
+		am = 0 \\ bm + cn = 0 \\ ck = 0
+	\end{cases}$. Пусть $c = 0$, тогда, тк $x_1 \ne 0$, то $a, b$ не могут быть одновременно 0, тогда $m = 0$. Итого, $x_1 = \begin{pmatrix}
+		a & 0 \\
+		b & 0 \\
+	\end{pmatrix}, x_2 = \begin{pmatrix}
+		0 & 0 \\
+		n & k \\
+	\end{pmatrix} $. Пусть $c \ne 0$, тогда $k = 0$. Если $m = 0$, то из $bm + cn = 0$ следует, что $n = 0$, и тогда $m = n = k = 0$, что противоречит условию $\Rightarrow$ $m\ne 0 \Rightarrow a = 0$. Итого $x_1 = \begin{pmatrix}
+	0 & 0 \\
+	b & c \\
+		\end{pmatrix}, x_2 = \begin{pmatrix}
+		m & 0 \\
+		n & 0 \\
+		\end{pmatrix}$. Таким образом, левые и правые делители нуля имеют вид $\begin{pmatrix}
+		a & 0 \\
+		b & 0 \\
+	\end{pmatrix}, \begin{pmatrix}
+		0 & 0 \\
+		b & c \\
+	\end{pmatrix}$, где $(a, b) \ne (0, 0), (b, c) \ne 0 \ a, b, c \in \Q$.
+
+	\
+
+	3) По определению $x \in R$ называется нильпотентным, если $x \ne 0$ и существует такое $n \in \N$, что $x^n = 0$. Рассмотрим матрицу $x = \begin{pmatrix}
+		a & 0 \\
+		b & c \\
+	\end{pmatrix}, \ a, b, c \in \Q$ и $a, b, c$ одновременно не равны 0 ($x \in R$). Тогда $x x = \begin{pmatrix}
+	a & 0 \\
+	b & c \\
+		\end{pmatrix} \begin{pmatrix}
+		a & 0 \\
+		b & c \\
+		\end{pmatrix} = \begin{pmatrix}
+		a^2 & 0 \\
+		ab+bc & c^2 \\
+		\end{pmatrix}$ (те у $x^n$ на главной диагонале стоят $a^n, c^n \Rightarrow$ тк $x^n$ должно равняться 0, а $a, c \in \Q$, то $a = c = 0$). Заметим, что для $n = 2  \ \ x^n = \begin{pmatrix}
+			0 & 0 \\
+		ab + bc & 0  \\
+		\end{pmatrix} = \begin{pmatrix}
+		0 & 0 \\
+		0 & 0 \\
+	\end{pmatrix} \Rightarrow$ $x = \begin{pmatrix}
+0 & 0 \\
+b & 0 \\
+\end{pmatrix}$ является нильпотентом ($b \ne 0$).
+		\end{solution}
+	
+		\begin{answer}
+			$\begin{pmatrix}
+				\frac{1}{a} & 0 \\
+				-\frac{b}{ac} & \frac{1}{c} \\
+			\end{pmatrix}, ac \ne 0; \ \  \begin{pmatrix}
+			a & 0 \\
+			b & 0 \\
+		\end{pmatrix}, \begin{pmatrix}
+		0 & 0 \\
+		b & c \\
+	\end{pmatrix}, (a, b) \ne (0, 0), (b, c) \ne 0 ; \ \ \begin{pmatrix}
+0 & 0 \\
+b & 0 \\
+\end{pmatrix}, b \ne 0, \ \ \ a, b, c \in \Q$ .
+		\end{answer}
+	
+	\section*{№2}
+	
+		Докажите что идеал $(x, y - 2)$ в кольце $\R[x, y]$ не является главным.
+		
+		\begin{proof}
+			По определению подмножество $I$ кольца $R$ называется идеалом, если выполнены условия: 
+			
+			1) $I$ -  подгруппа по сложению
+			
+			2) $\forall a \in I, r \in R: \ ra \in I, ar \in I$
+			
+			Кроме того, идеал $I$ называется главным, если существует такое $p \in R$, что $I = (p)$ $((p) := \{rp \ | \ r \in R\})$. 
+			
+			Обозначим кольцо $\R[x, y]$ как $R$.
+			Пусть идеал $(x, y - 2)$ в кольце $R$ является главным. Тогда $(x, y - 2) = \{ax + b(y - 2) \ | \ a, b \in R\}$. Если  $(x, y - 2)$ главный, то $(x, y - 2) = (p)$ для некоторого $p \in R$. Тогда, если взять $a = 1, \ b = 0$, получим, что $(x, y-2) = \{x\} \Rightarrow x \in (p)$. Аналогично для $a = 0,\  b = 1$ получим , что $(x, y - 2) = {y - 2} \Rightarrow y - 2 \in (p)$. Итого, получили, что $x$ и $y - 2$ делятся на $p$ (тк $x =  q_1p \in (p), y - 2 = q_2p \in (p), \ q_1, q_2 \in \R[x, y]$). Тк $p$ делит многочлены первой степени, то его степень не больше 1. Пусть $p \ne const$. Тогда, если $x$ делится на $p$, то $p = kx, \ k \in \R$, но это невозможно, тк $p$ должен делить $y - 2$. Значит $p = const \ne 0$ (не равен 0, тк иначе $(0) = \{0\} \ne (x, y - 2)$). Известно, что константы являются обратимыми и  порождают всё кольцо, а значит идеал $(x, y - 2)$ является всем кольцом $\Rightarrow$ противоречие, тк все многочлены в $(x, y - 2)$ в точке (0, 2) равны только 0. 
+		\end{proof}
+	
+	\section*{№3}
+	
+		При помощи теоремы о гомоморфизме для колец установите изоморфизм $\C[x] / (2x^2-x) \simeq \C \oplus \C$, где \\ $\C \oplus \C = \{(z_1, z_2) \ | \ z_1, z_2 \in \C\}$ - кольцо с покомпонентными оперциями сложения и умножения.
+		
+		\begin{solution}
+			По теореме о гомоморфизме для колец $R / \text{Ker} \varphi \simeq \text{Im} \varphi$ (обозначил $\C[x]$ как $R$). Заметим, что $2x^2-x = x(2x-1)$. Пусть $\varphi: \C[x] \to \C \oplus \C, \ \varphi(f) = (f(0), f(0.5))$ (0, 0.5 являются корнями уравнения $x(2x-1) = 0$).  При этом отображение $\varphi$ является гомоморфизмом, тк $\varphi(a + b) = ((a+b)(0), (a+b)(0.5)) = (a(0) + b(0), a(0.5) + b(0.5)) = (a(0), a(0.5)) + (b(0), b(0.5)) = \varphi(a) + \varphi(b)$ и $\varphi(ab) = ((ab)(0), (ab)(0.5)) = (a(0)b(0), a(0.5)b(0.5)) = (a(0),a(0.5)) (b(0),b(0.5))= \varphi(a)\varphi(b) \ \forall a, b \in R$. Тогда, тк по определению ядро гомоморфизма $\varphi$ - это множество $\text{Ker}\varphi := \{r \in R | \varphi(r) = 0\}$, а образ гомоморфизма $\varphi$ - это множество $\text{Im} \varphi := \varphi(R)$, найдём $\text{Ker}\varphi$. 
+			
+			Тк $\varphi (x(2x-1)) = 0$, то $x(2x-1) \in \text{Ker}\varphi$. Возьмём произвольный $f(x)(x(2x-1))  \in x(2x-1)$. Тк ядро является идеалом в $R$ и $x(2x-1) \in R$, то любой многочлен, делящийся на $x(2x-1)$ принадлежит ядру. Итого, $x(2x-1) \subseteq \text{Ker} \varphi$.
+			%Тк для любого $f(x)$ выполняется $f(x)(x(2x-1)) \in x(2x-1)$, то $x(2x-1) \subset \text{Ker} \varphi$ ($ \text{Ker} $ - идеал в $R$).
+			
+			Покажем, что в ядре нет ненулевых элементов степени меньше 2. Пусть $f = ax + b \in \text{Ker} \varphi$, тогда $\varphi(f) = (b, 0.5a+b) = (0, 0) \Leftrightarrow a = 0, b = 0$.
+			 Пусть $f = x(2x-1) q(x) + r(x) \in \text{Ker}\varphi$, где степень $r(x)$ не больше 1 или $r = 0$. Тогда $\varphi(f) = \varphi(x(2x-1) q + r) =  \varphi(x(2x-1)) \varphi(q)  +  \varphi(r)$. Тк $f \in \text{Ker}\varphi, \ x(2x-1) \in \text{Ker}\varphi$, то получаем, что $0 = 0 + \varphi(r) \Rightarrow \varphi(r) = 0 \Rightarrow r = 0$ (тк в ядре нет элементов степени не больше 1). Таким образом, $f \in x(2x-1) \Rightarrow \text{Ker}\varphi \subseteq x(2x-1)$.
+			 
+			 Таким образом, получили, что $\text{Ker} \varphi$ и $x(2x-1) = 2x^2-x$ совпадают. Тогда, тк  $\text{Im}\varphi$ совпадает с $\C \oplus \C$ (тк для любых $(z_1, z_2) \in \C \oplus \C$ можно рассмотреть в $\C[x]$ многочлен $f(x) = -z_1(2x-1) + 2xz_2$, для которого выполняется $f(0) = z_1, f(0.5) = z_2$, а значит $\varphi(f) = (z_1, z_2)$, и $\varphi$ - сюръекция, а значит $\text{Im}\varphi$ совпадает с $\C \oplus \C$ ), то  по теореме о гомоморфизме для колец получили изоморфизм $\C[x] / (2x^2-x) \simeq \C \oplus \C$, где
+			 $\varphi: \C[x] \to \C \oplus \C, \ \varphi(f) = (f(0), f(0.5))$. 
+	
+		\end{solution}
+	
+		\begin{answer}
+			$\varphi: \C[x] \to \C \oplus \C, \ \varphi(f) = (f(0), f(0.5))$.
+		\end{answer}
+	
+	
+	\section*{№4}	
+		Пусть $R$ - коммутативное кольцо и $I \lhd R$. Докажите, что факторкольцо $R / I$ является полем тогда и только тогда, когда $I \ne R$ и не существует собственного идеала $J \lhd R$ с условием $I \subsetneq J$.
+		
+		\begin{proof}
+			По определению поле - коммутативное кольцо, в котором $0 \ne 1$ и всякий ненулевой элемент обратим. 
+			
+			1) Докажем, что если факторкольцо $R / I$ является полем, то $I \ne R$ и не существует собственного идеала $J \lhd R$ с условием $I \subsetneq J$. 
+			Если $R$ - коммутативное кольцо и $I \lhd R$ и факторкольцо $R / I$ является полем, то факторкольцо $R / I$ является коммутативным кольцом, в котором $0 \ne 1$ и всякий ненулевой элемент обратим. Пусть $R = I$. Тогда $R/I = R / R = 0$, но тогда $R / I$ не является полем. Итого, $I \ne R$. Пусть существует собственный идеал $J \lhd R$ с условием $I \subsetneq J$. Пусть $x \in J$, но $x \notin I$. Тогда $x + I \ne 0 + I$ и, тк $R / I$ - поле, то $x + I$ обратим, а значит существует такой $y+I \in R / I$, что $(x + I)(y + I) = xy + I = 1 + I$. Тогда $xy - 1 \in I$. При этом $xy - (xy - 1) = 1$ и $xy - 1 \in J$ (тк $I \subsetneq J$) и $xy \in J$ (тк $x \in J, y \in R$). Поэтому $1 \in J$. Таким образом, $J = R$ (факт из лекции) $\Rightarrow J$ - несобственный идеал, получили противоречие, а значит если факторкольцо $R / I$ является полем, то $I \ne R$ и не существует собственного идеала $J \lhd R$ с условием $I \subsetneq J$. 
+			
+			2) Теперь докажем, что если $I \ne R$ и не существует собственного идеала $J \lhd R$ с условием $I \subsetneq J$, то факторкольцо $R / I$ является полем. Пусть $x \notin I$ ($x + I \in R / I$ и $x + I \ne 0 + I$). Пусть $J$ - собственный идеал, такой что $J = \{rx + i, \ i \in I, r \in R\}$ (является идеалом, тк: \\
+			 %1) $e \in J$, \\
+			%2) для $a = r_1x + i_1, b = r_2x+i_2 \in J \ ab=(r_1x + i_1)(r_2x + i_2) = (r_1xr_2)x + i_1r_2x + r_1xi_2 + i_1i_1 \in J$ \\(тк $r_1xr_2 \in R,\  i_1r_2x + r_1xi_2 + i_1i_1 \in I$ (следует из определения идеала)). \\ 
+			%3) для $a = rx+i \in J \ a^{-1} = $\\
+			1) для $a = r_1x+i_1, b = r_2x+i_2 \in J$ выполняется $ a + b = (r_1 + r_2)x + (i_1 + i_2) \in J$, тк $r_1 + r_2 \in R, i_1+i_2 \in I$ \\
+			2) $0 = 0 \cdot x + 0 \in J; \ 0 + rx + i = rx + i + 0 = rx + i$ \\
+			3) для $a = rx + i$ выполняется $-a = -rx - i \in J, \ a + (-a) = rx + i - rx - i = 0$ \\
+			$1), 2), 3) \Rightarrow J$ - подгруппа в $R$ по сложению \\
+			4) для $a = r_1x + i \in J, r_2 \in R$ выполняется $ r_2a=r_2 (r_1x + i) = (r_2r_1)x + r_2i \in J$ и $ ar_2 = (r_1x + i) r_2 = (r_1r_2)x + ir_2 \in J,$ \\
+			$J$ - подгруппа в $R$ по сложению + 4) $\Rightarrow J$ - идеал) 
+			
+			Заметим, что $\forall i \in I$ выполняется, что $i = 0x + i \in I \Rightarrow I \subseteq J$. Тк $I \ne R$ и не существует собственного идеала $J \lhd R$ с условием $I \subsetneq J$, то $J = R$ (в том числе $x = 1x + 0 \in J$, но $x \notin I$). Тогда, тк $1 \in R$ и $1 \in J$ (тк $1 \in R = Rx + I$), то  для некоторых $r \in R, i \in I$ $1 = rx + i \Rightarrow 1 - rx = i \in I \Rightarrow 1 + I = rx + I = (r + I)(x + I) \Rightarrow x + I$ - обратим. Таким образом, произвольный ненулевой элемент $x + I \in R/I$ обратим, $0 \ne 1$, $R/I$ - коммутативное кольцо, а значит $R/I$ - поле. 
+		\end{proof}
+	
+	
+	
+	
+	
+\end{document}
