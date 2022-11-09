@@ -1,0 +1,214 @@
+\documentclass[a4paper, 16pt]{article}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage[russian, english]{babel}
+\usepackage{subfiles}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage{ucs}
+\usepackage{textcomp}
+\usepackage{array}
+\usepackage{indentfirst}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage[margin=1cm]{geometry}
+\usepackage{authblk}
+\usepackage{tikz}
+\usepackage{icomma}
+\usepackage{gensymb}
+
+\renewcommand{\baselinestretch}{1.5}
+
+\renewcommand{\C}{\mathbb{C}}
+\newcommand{\N} {\mathbb{N}}
+\newcommand{\Q} {\mathbb{Q}}
+\newcommand{\Z} {\mathbb{Z}}
+\newcommand{\R} {\mathbb{R}}
+\newcommand{\ord} {\mathop{\rm ord}}
+\newcommand{\Ima}{\mathop{\rm Im}}
+\newcommand{\rk}{\mathop{\rm rk}}
+
+\renewcommand{\r}{\right}
+\renewcommand{\l}{\left}
+\renewcommand{\inf}{\infty}
+\newcommand{\Sum}[2]{\overset{#2}{\underset{#1}{\sum}}}
+\newcommand{\Lim}[2]{\lim\limits_{#1 \rightarrow #2}}
+
+\newcommand{\task}[1] {\noindent \textbf{Задача #1.} \hfill}
+\newcommand{\note}[1] {\noindent \textbf{Примечание #1.} \hfill}
+
+\newenvironment{proof}[1][Доказательство]{%
+	\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1:}]
+		\item \hspace{15pt}
+	}{
+		$ \hfill\blacksquare $
+	\end{trivlist}
+	\hfill\break
+}
+\newenvironment{solution}[1][Решение]{%
+	\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1:}]
+		\item \hspace{15pt}
+	}{
+	\end{trivlist}
+}
+
+\newenvironment{answer}[1][Ответ]{%
+	\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1:}] \hskip \labelsep
+	}{
+	\end{trivlist}
+	\hfill
+}
+
+\title{Дискретная математика} 
+\date{\today}
+\author{Сидоров Дмитрий}
+\affil{Группа БПМИ 219}
+
+
+\begin{document}
+	\maketitle
+	
+\section*{№1}
+	
+\subsection*{a)}
+	
+	$ (A \backslash B) \cap ((A \cup B) \backslash (A \cap B)) = A \backslash B$ - ?
+	
+	\begin{solution}
+		Для удобства обозначим выражения: $x \in A = a, \ x \in B = b$, тогда $(A \backslash B) \cap ((A \cup B) \backslash (A \cap B)) = (a \land \overline{b}) \land ((a \lor b) \land 
+		\overline{(a \land b)})  =  (a \land \overline{b}) \land ((a \lor b) \land 
+		(\overline{a} \lor \overline{b})) = a \land \overline{b} \land ((a \lor b) \land 
+		(\overline{a} \lor \overline{b}))$ (1)
+		
+		$A \backslash B = a \land \overline{b}$ (2)
+		
+		При $a = 0: (1) = 0, \ (2) = 0$. При $a = 1: (1) = \overline{b} \land (1 \land \overline{b}) = \overline{b},\ (2) = \overline{b}.$ Таким образом, $(1) = (2) \Rightarrow  (A \backslash B) \cap ((A \cup B) \backslash (A \cap B)) = A \backslash B$.
+	\end{solution}
+		\begin{answer}
+			верно
+		\end{answer}
+	
+\subsection*{б)}
+	
+	$ (A \cap B) \backslash C = (A \backslash C) \cap (B \backslash C) $ - ?
+	
+	\begin{solution}
+		Для удобства обозначим выражения: $x \in A = a, \ x \in B = b, \ x \in C = c$, тогда 
+		$ (A \cap B) \backslash C = a \land b \land \overline{c}$ (1)
+		
+		$ (A \backslash C) \cap (B \backslash C) = (a \land \overline{c}) \land (b \land \overline{c}) = a \land b \land \overline{c} $ (2)
+		
+		Заметим, что $(1) = (2) \Rightarrow (A \cap B) \backslash C = (A \backslash C) \cap (B \backslash C)$
+	\end{solution}
+
+	\begin{answer}
+		верно
+	\end{answer}
+
+\subsection*{в)}
+
+		$ (A \cup B) \backslash (A \backslash B) \subseteq B$
+	
+	\begin{solution}
+		Заметим, что выражение $ (A \cup B) \backslash (A \backslash B)$ определяет множество, которое состоит из элементов, принадлежащих объединению множест A и B, но не принадлежащих множеству$(A \backslash B)$, которое в свою очередь состоит из элементов, которые принадлежат множетсву A, но не принадлежат множетсву B. Таким образом, выражение $ (A \cup B) \backslash (A \backslash B)$ состоит из элементов, которые принадлежат множествам A и B, и не состоит из элементов, которые принадлежат только множествеу А, т.е. состоит из элементов множетсва B. Значит множество, которое определяется выражением $ (A \cup B) \backslash (A \backslash B)$, совпадает с $B \Rightarrow (A \cup B) \backslash (A \backslash B) \subseteq B$ - истина.
+	\end{solution}
+
+	\begin{answer}
+		верно
+	\end{answer}
+
+\subsection*{г)}
+
+	$((A \backslash B) \cup (A \backslash C)) \cap (A \backslash (B \cap C)) = A \backslash (B \cup C)$ - ?
+	
+	\begin{solution}
+		Для удобства обозначим выражения: $x \in A = a, \ x \in B = b, \ x \in C = c$, тогда $((A \backslash B) \cup (A \backslash C)) \cap (A \backslash (B \cap C)) = ((a \land \overline{b}) \lor (a \land \overline{c})) \land (a \land \overline{b \land c}) = (a \land (\overline{b} \lor \overline{c})) \land (a \land (\overline{b} \lor \overline{c})) = a \land (\overline{b} \lor \overline{c}) \ne a \land (\overline{b} \land \overline{c}) = A \backslash (B \cup C)$
+		
+		Значит, $((A \backslash B) \cup (A \backslash C)) \cap (A \backslash (B \cap C)) \ne  A \backslash (B \cup C)$
+	\end{solution}
+
+	\begin{answer}
+		неверно
+	\end{answer}
+
+\section*{№2}
+
+	$A_1 \backslash B_1 = A_9 \backslash B_9$
+	
+	Д-ать: 	$A_2 \backslash B_8 = A_5 \backslash B_5$
+	
+	\begin{proof}
+		1) Тк $A_n$ - подмножество $A_{n-1}$, $\dots$, $A_3$ - подмножество $A_2$, $A_2$ - подмножество $A_1$, то каждое из множеств $A$ можно записать как $A_n = A_{n+1} \cup a_n$, где $a_n = A_n \backslash A_{n+1}$
+		
+		2) Тк $B_{n-1}$ - подмножество $B_{n}$, $\dots$, $B_2$ - подмножество $B_3$, $B_1$ - подмножество $B_2$, то каждое из множеств $B$ можно записать как $B_{n+1} = B_{n} \cup b_n$, где $b_n = B_{n+1} \backslash B_{n}$
+		
+		Из 1) и 2) следует, что $A_1 = A_2 \cup a_1 = A_3 \cup a_2 \cup a_1 = \dots = A_9 \cup a_8 \cup a_7 \cup \dots \cup a_2 \cup a_1$ и что 
+		$B_9 = B_8 \cup b_8 = B_7 \cup b_7 \cup b_8 = \dots = B_1 \cup b_1 \cup b_2 \cup \dots
+		\cup b_7 \cup b_8$
+		
+		Таким образом, $A_1 \backslash B_1 = (A_9 \cup a_8 \cup a_7 \cup \dots \cup a_2 \cup a_1)  \backslash B_1 = A_9 \backslash B_9 = A_9 \backslash (B_1 \cup b_1 \cup b_2 \cup \dots \cup b_7 \cup b_8)$. Это равенство выполняется только в том случае, когда $a_8 \cup a_7 \cup \dots \cup a_2 \cup a_1 = b_1 \cup b_2 \cup \dots
+		\cup b_7 \cup b_8 = 0$, т. е. каждое из множеств $a_1, a_2, \dots, a_8, b_1, b_2, \dots, b_8$ равно пустому множеству.
+		
+		$A_2 \backslash B_8 = (A_3 \cup a_2) \backslash (B_7 \cup b_7) = (A_4 \cup a_3 \cup a_2) \backslash (B_6 \cup b_6 \cup b_7) = (A_5 \cup a_4 \cup a_3 \cup a_2) \backslash (B_5 \cup b_5 \cup b_6 \cup b_7)$. Зная, что каждое из множеств $a_1, a_2, \dots, a_8, b_1, b_2, \dots, b_8$ равно пустому множеству, получаем, что $A_2 \backslash B_8 = (A_5 \cup a_4 \cup a_3 \cup a_2) \backslash (B_5 \cup b_5 \cup b_6 \cup b_7) =
+		A_5 \backslash B_5$ 
+	\end{proof}
+
+\section*{№3}
+
+	Д-ть: $1 ^3 + 2^3 + \dots + n^3 = (1 + 2 + \dots + n)^2$
+
+	\begin{proof}
+		1) При $n = 1 :\ 1 = 1$ - истина
+		
+		2) Пусть равенство выполняется для $n = k$, значит $1 ^3 + 2^3 + \dots + k^3 = (1 + 2 + \dots + k)^2$. При $n = k + 1: \ 1 ^3 + 2^3 + \dots + k^3 + (k + 1) ^3= (1 + 2 + \dots + k)^2 + (k + 1)^3$ Необходимо доказать, что $(1 + 2 + \dots + k)^2 + (k + 1)^3 = 
+		(1 + 2 + \dots + k + k + 1)^2$
+		
+		$(1 + 2 + \dots + k + k + 1)^2 - (1 + 2 + \dots + k)^2 = (k + 1)(2 + 4 + \dots + 2k + k + 1)$ (по формуле разности квадратов)
+		
+		$2 + 4 + \dots + 2k$ - арифметическая прогрессия с разностью 2, значит $2 + 4 + \dots + 2k = \frac{2 + 2k}{2}(k) = (k  +1)k$. Тогда $(k + 1)(2 + 4 + \dots + 2k + k + 1) = (k + 1)((k  +1)k + k + 1) = (k  +1)((k+1)(k + 1)) = (k  + 1)^3$. Таким образом, 
+		$(1 + 2 + \dots + k + k + 1)^2 - (1 + 2 + \dots + k)^2 = (k  + 1)^3 \Rightarrow (1 + 2 + \dots + k)^2 + (k + 1)^3 = (1 + 2 + \dots + k + k + 1)^2$. Значит, по методу мат индукции $1 ^3 + 2^3 + \dots + n^3 = (1 + 2 + \dots + n)^2$.
+	\end{proof}
+
+\section*{№4}
+
+	Д-ть: $ F_{2k} - F_{2k-1} + \dots + F_4 - F_3 + F_2 - F_1 = F_{2k-1}  $
+	
+	\begin{proof}
+		1) При $k = 1$: $F_2 - F_1 = 1 - 1 = 0 = F_1$ - истина
+		
+		2) Пусть при $ k = n$ выполняется равенство, тогда $ F_{2n} - F_{2n-1} + \dots + F_4 - F_3 + F_2 - F_1 = F_{2n-1}  $
+		
+		При $k = n + 1$: необходимо доказать, что $ F_{2n + 2} - F_{2n+1} + F_{2n} - F_{2n-1} + \dots + F_4 - F_3 + F_2 - F_1 = F_{2n+1}  $
+		
+		$ F_{2n + 2} - F_{2n+1} + F_{2n} - F_{2n-1} + \dots + F_4 - F_3 + F_2 - F_1 = F_{2n+2} - F_{2n+1} + F_{2n-1} = F_{2n} + F_{2n-1} = F_{2n + 1} =  F_{2n + 1} $
+		
+		Значит, по методу мат индукции $ F_{2k} - F_{2k-1} + \dots + F_4 - F_3 + F_2 - F_1 = F_{2k-1}  $.
+	\end{proof}
+
+\section*{№5}
+
+	\begin{proof}
+	(Пример системы, в которой любые 3 дуги имеют общую точку, а общей точки у всех дуг нет (при этом каждая дуга произвольного размера) см на последней странице (рис 1))
+
+	Если каждая дуга меньше $180^{\circ}$, то каждые пары дуг могут пересекаться только на одной половине окружности (пересечение - только одна дуга, меньшая $180^{\circ}$), т. е. образуют только одно множество точек пересечения. Т. к. любые три дуги имеют общую точку, то для любой пары дуг, третья проходит через точку пересечения этой пары.(1) Пусть есть 2 пересекающиеся дуги (рис 2), тогда часть третьей дуги принадлежит множеству точек пересечения этих 2 дуг (рис 3), следовательно, существует множество точек пересечения этих 3 дуг. Из утверждения (1) следует, что часть всех последующих дуг должна принадлежать множеству точек пересечения этих предыдущих дуг, таким образом, все дуги имеют множество точек пересечения, т. е. имеют общую точку.
+	\end{proof}
+	
+\section*{№6}
+
+	\begin{proof}
+		Решим с помощью индукции относить количества чисел. 
+		
+		1) При $n=1$: есть одно число, которое уже упорядоченно в порядке возрастания.
+		
+		2) Пусть можно расставить $n=k$ чисел в порядке возрастания.
+		Необходимо доказать, что тогда можно расставить $n = k+1$ чисел в порядке возрастания. Пронумеруем все числа как $a_1, a_2, a_3, \dots, a_k, a_{k+1}.$ Мы знаем, что можно расставить $k$ подряд стоящих чисел, значит, можно расставить числа  $a_1, a_2, a_3, \dots, a_k$ в порядке возрастания, т.е. получится последовательность из $k$ упорядоченных чисел и числа $a_{k+1}$ (поэтому будем считать, что $a_1 \leq a_2 \leq a_3 \leq \dots \leq a_k$). Необходимо упорядочить число $a_{k+1}$, т.е. поставить его между числами $a_i \leq a_{k+1} \leq a_{i+1}$. Для этого переставим числа $a_1, a_2, a_3, \dots, a_k$ в обратном порядке, получили последовательность 
+		$a_k, a_{k-1}, \dots, a_2, a_1, a_{k+1}$. Переставим все числа в обратном порядке, получим $a_{k+1}, a_1, a_2, a_3, \dots, a_k$. Далее переставим $i+1$ число, получим
+		$a_i, a_{i-1}, \dots, a_2, a_1, a_{k+1}, a_{i + 1} \dots, a_k$. Далее переставим $i$ чисел и получим $a_1, a_2, a_3, \dots, a_i, a_{k+1}, a_{i+1}, \dots, a_k.$ Таким образом, мы получили упорядоченную последовательность, значит, можно расставить $n = k+1$ чисел в порядке возрастания. Тогда по методу мат индукции можно расставить любое количество $n$ чисел.
+	\end{proof}
+	
+\end{document}
