@@ -1,0 +1,154 @@
+\documentclass[a4paper, 16pt]{article}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage[russian, english]{babel}
+\usepackage{subfiles}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage{ucs}
+\usepackage{textcomp}
+\usepackage{array}
+\usepackage{indentfirst}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage[margin=1.2cm]{geometry}
+\usepackage{authblk}
+\usepackage{tikz}
+\usepackage{icomma}
+\usepackage{gensymb}
+\usepackage{graphicx}
+
+\DeclareGraphicsExtensions{,.png,.jpg}
+
+\DeclareMathOperator*\lowlim{\underline{lim}}
+\DeclareMathOperator*\uplim{\overline{lim}}
+
+\graphicspath{{pictures/}}
+
+\renewcommand{\baselinestretch}{1.4}
+
+\renewcommand{\C}{\mathbb{C}}
+\newcommand{\N} {\mathbb{N}}
+\newcommand{\Q} {\mathbb{Q}}
+\newcommand{\Z} {\mathbb{Z}}
+\newcommand{\R} {\mathbb{R}}
+\newcommand{\ord} {\mathop{\rm ord}}
+\newcommand{\Ima}{\mathop{\rm Im}}
+\newcommand{\rk}{\mathop{\rm rk}}
+
+\renewcommand{\r}{\right}
+\renewcommand{\l}{\left}
+\renewcommand{\inf}{\infty}
+\newcommand{\Sum}[2]{\overset{#2}{\underset{#1}{\sum}}}
+\newcommand{\Lim}[2]{\lim\limits_{#1 \rightarrow #2}}
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+
+\newcommand{\task}[1] {\noindent \textbf{Задача #1.} \hfill}
+\newcommand{\note}[1] {\noindent \textbf{Примечание #1.} \hfill}
+\newenvironment{proof}[1][Доказательство]{%
+	\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1:}]
+		\item \hspace{14pt}
+	}{
+		$ \hfill\blacksquare $
+	\end{trivlist}
+	\hfill\break
+}
+\newenvironment{solution}[1][Решение]{%
+	\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1:}]
+		\item \hspace{15pt}
+	}{
+	\end{trivlist}
+}
+
+\newenvironment{answer}[1][Ответ]{%
+	\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1:}] \hskip \labelsep
+	}{
+	\end{trivlist}
+	\hfill
+}
+
+\title{Алгебра} 
+\date{\today}
+\author{Сидоров Дмитрий}
+\affil{Группа БПМИ 219}
+
+
+\begin{document}
+	\maketitle
+	
+	\section*{№1}
+	
+		Докажите, что формула $m \circ n = 2mn - 2m -2n + 3$ задаёт бинарную операцию на множестве $\R \textbackslash \{1\}$ и что $(\R \textbackslash \{1\}, \circ)$ является группой.
+		
+		\begin{proof}
+			Докажем, что $m \circ n = 2mn - 2m -2n + 3$ задаёт бинарную операцию на множестве $\R \textbackslash \{1\}$. Заметим, что $2(m - 1)(n - 1) + 1 = 2(mn - n - m + 1) + 1 = 2mn - 2m - 2n + 3 = m \circ n$. Тогда $m \circ n = 1 \Leftrightarrow 2(m - 1)(n - 1) + 1 = 1
+			\Leftrightarrow 2(m - 1)(n - 1) = 0 \Leftrightarrow m = 1$ или $ n = 1$. Тк необходимо доказать, что $m \circ n$ задаёт бинарную оперцаию на множестве $\R \backslash \{1\}$, то $m \ne 1, n \ne 1 \Rightarrow m \circ n \ne 1 \ \forall m, n \in \R \backslash \{1\}$, а значит, тк по определению бинарная операция на $M$ - это отображение $\circ: M \times M \rightarrow M, (a, b) \rightarrow a \circ b$,  то $m \circ n$ - бинарная оперция, тк каждой паре элементов множества $\R \textbackslash \{1\}$  ставится в соответвие элемент из $\R \textbackslash \{1\}$.
+			
+			Теперь докажем, что $(\R \textbackslash \{1\}, \circ)$ является группой.  По определению $(M, \circ)$ называется группой, если выполнены следующие условия: ассоциативность, существует нейтральный элемент, существует обратный элемент. 
+			
+			1) Рассмотрим $a, b, c \in \R \textbackslash \{1\}$. $a \circ b = 2ab - 2a - 2b + 3 \Rightarrow (a \circ b) \circ c = 2 (2ab - 2a - 2b + 3)c - 2 (2ab - 2a - 2b + 3) - 2c + 3 = 
+			4abc - 4ac - 4bc + 6c - 4ab + 4a + 4b - 6 - 2c + 3 = 2a(2bc - 2c - 2b + 3) - 2(2bc - 2b - 2c + 3) - 2a + 3 = a \circ (b \circ c) \Rightarrow$ ассоциативность выпоняется. 
+			
+			2) Заметим, что $\exists e = \frac{3}{2} \in \R \textbackslash \{1\}:
+			\frac{3}{2} \circ a = 3a - 3 - 2a + 3 = a = a \circ \frac{3}{2} \ \forall a \in \R \textbackslash \{1\} \Rightarrow$ существует нейтральный элемент.
+			
+			3) Покажем, что существует обратный элемент. Рассмотрим произвольный элемент $a \in \R \textbackslash \{1\}$. Необходимо показать, что существует такой $b \in \R \textbackslash \{1\}$, что $a \circ b = b \circ a = e = \frac{3}{2}$. $\frac{3}{2} = a \circ b = 2ab - 2a - 2b + 3 = b \circ a\Rightarrow 2ab - 2a - 2b + \frac{3}{2} = 0 \Rightarrow 4ab - 4a - 4b + 3 = 0 \Rightarrow
+			b(4a-4) = 4a - 3 \Rightarrow b = \frac{4a - 3}{4a - 4}$, тк $a \in \R \textbackslash \{1\} \Rightarrow a \ne 1$. Значит, в $\R \textbackslash \{1\}$ существует обратный элемент.
+			
+			Таким образом, условия выполняются $\Rightarrow$ $(\R \textbackslash \{1\}, \circ)$ является группой.
+		\end{proof}
+	
+	\section*{№2 }
+	
+		Найдите все элементы порядка 20 в группе $(\C \backslash \{0\}, \times)$.
+		
+		\begin{solution}
+			По определению порядок элемента $g$  - это такое минимальное положительное число $m$, что $g^m = e$ ($g$ - элемент группы). Для группы $(\C \backslash \{0\}, \times) \ \ e = 1$. Значит необходимо найти все корни 20-ой степени из 1 такие, что ни в какой степени меньше 20 эти корни не равны 1. По формуле Эйлера корни 20-ой степени из комплексного числа имеют вид $e^{\frac{2\pi k \cdot i}{20}} = e^{\frac{\pi k \cdot i}{10}}, \ k = 0, 1, \dots, 19$. Покажем, что если НОД$(k, 20) \ne 1$, то $e^{\frac{\pi k \cdot i}{10}}$ не является элементом порядка 20 в группе $(\C \backslash \{0\}, \times)$. Пусть НОД$(k, 20) = d$, тогда $(e^{\frac{\pi k \cdot i}{10}})^{\frac{20}{d}} = e^{\frac{2\pi k \cdot i}{d}} = e^{2\pi n \cdot i} (n \in \Z) = \cos(2\pi n) + i \cdot \sin(2 \pi n) = 1 \Rightarrow \frac{20}{d}$ - порядок элемента  $e^{\frac{\pi k \cdot i}{10}}$ и тк $d \ne 1$, то $\frac{20}{d} < 20 \Rightarrow$ $e^{\frac{\pi k \cdot i}{10}}$ не является элементом порядка 20 в группе $(\C \backslash \{0\}, \times)$.  Таким образом, нам удовлетворяют только такие $k$, для которых НОД$(k, 20) = 1$, т.е. 1, 3, 7, 9, 11, 13, 17, 19. 
+		\end{solution}
+	
+		\begin{answer}
+			$e^{\frac{\pi k \cdot i}{10}}, \ k = 1, 3, 7, 9, 11, 13, 17, 19$
+		\end{answer}
+	
+	\section*{№3}
+	
+		Найдите все левые и все правые смежные классы группы $A_4$ по подгруппе $\langle \sigma \rangle$, где $\sigma =
+		 \begin{pmatrix}
+			1 & 2 & 3 & 4 \\
+			2 & 4 & 3 & 1 \\
+		\end{pmatrix} $
+	
+		\begin{solution}
+			Пусть $H$ - подгруппа группы $G$, тогда по определению $gH = \{gh | h \in H\}$ - левый смежный класс, а $Hg = \{hg | h \in H\}$ - правый смежный класс. По условию $G = A_4, H =  \langle \sigma \rangle$. Группа состоит из $\frac{4!}{2} = 12$ элементов: $id, (123), (124), (134), (132), (142), (143), (234), (243), (12)(34), (13)(24), (14)(23)$. Тк подгруппа порождена циклом (124), то $H = \{id, (124), (142)\}$. Найдём левые смежные классы: $id  H = \{id, (124), (142)\}$, $(143)H = \{(143), (231), (13)(24)\}$, $(134)H = \{(134), (12)(34), (234)\}$, $(132)H = \{(132), (243), (14)(23)\}$. 
+			Найдём правые смежные классы: \\ $H id = \{id, (124), (142)\}$, 
+			$H(123) = \{(123), (14)(23), (234)\}$, $H(134) = \{(134), (13)(24), (132)\}$, $H(143) = \{(143), (243), (12)(34)\}$.
+		\end{solution}
+	
+		\begin{answer}
+			Левые смежные классы: $ \{id, (124), (142)\}$, $\{(143), (231), (13)(24)\}$, $ \{(134), (12)(34), (234)\}$, $ \{(132), (243), (14)(23)\}$. 
+			
+			Правые смежные классы: $\{id, (124), (142)\}$, 
+			$\{(123), (14)(23), (234)\}$, $\{(134), (13)(24), (132)\}$, $ \{(143), (243), (12)(34)\}$.
+		\end{answer}
+	
+	\section*{№4}
+	
+		Докажите, что всякая подгруппа циклической группы является циклической.
+		
+		\begin{proof}
+			Пусть $G$ - циклическая группа, $H$ - подгруппа $G$.  Тк $G$ - циклическая группа, то, если $g$  - образующий элемент, все элементы в $G$ представимы в виде $g^n, \ n \in \Z$.  Заметим, что если $H$ состоит из одного элемента, то теорема выполняется, поэтому будем считать, что в $H$ более одного элемента. Рассмотрим элемент $g^a \in H$, где $a$ - наименьшая положительная степень (такой элемент точно есть, тк если $H$ содержит элемент $g^{-a}$, то $H$ содержит элемент $g^a$, тк по определению подгруппы, если $x \in H$, то $x^{-1} \in H$). Теперь рассмотрим произвольный элемент $g^b \in H$. Для $a, b$ выполняется $b = q \cdot a + r, \ 0 \leq r < a,\ q \in Z$. $g^r = g^{b - q \cdot a} = g^b \cdot g^{-q\cdot a} = g^b \cdot (g^a)^{-q} \in H$, тк $g^b \in H, \ g^a \in H$. Тк $a$ - наименьшая положительная степень элемента из $H$, то $r = 0 \Rightarrow b = q \cdot a \Rightarrow g^b = (g^a)^q \Rightarrow$ $H$  состоит из степеней $g^a$, а значит $H$ является циклической группой ($g^a$ - её образующий элемент). 
+		\end{proof}
+	
+	
+	
+	
+	
+	
+	
+	
+\end{document}
