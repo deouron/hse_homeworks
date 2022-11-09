@@ -1,0 +1,152 @@
+\documentclass[a4paper,16pt]{article}
+\usepackage{cmap}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper, left=20mm, right=10mm, top=20mm, bottom=20mm]{geometry}
+\usepackage[english,russian]{babel}
+\usepackage{amsmath,amsfonts,mathtools,amssymb}
+
+\author{Сидоров Дмитрий}
+\title{}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\graphicspath{}
+\DeclareGraphicsExtensions{.jpg, .png}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\im}{Im}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\linespread{1.8}
+\mathtoolsset{showonlyrefs=true}
+
+
+\begin{document}
+	
+	\noindent
+	\maketitle
+	\section*{№ 1}
+	
+	Доказать, что $(A \to B) \vee (B \to C) $ - тавтология.
+	
+	Д-во:
+	
+	$(A \to B) \vee (B \to C) \equiv (\bar{A} \vee B) \vee (\bar{B} \vee C) \equiv \bar{A} \vee C \vee B \vee \bar{B}$
+	
+	Заметим, что $B \vee \bar{B} \equiv 1$ при любом $B$. Значит, $\bar{A} \vee C \vee B \vee \bar{B} \equiv 1$ при любых значениях $A, B, C$, т. е. истинно при любых значениях входящих в него элементарных высказываний, т. е. является тавтологией.
+	
+	\begin{flushright}
+		\textbf{чтд}
+	\end{flushright}
+
+	\section*{№2}
+	
+	$(A \to (B \to C)) \equiv ((A \to B) \to C)$ - ?
+	
+	$A \to (B \to C) \equiv \bar{A} \vee (\bar{B} \vee C) \equiv \bar{A} \vee \bar{B} \vee C $ (1)
+	
+	$(A \to B) \to C \equiv (\overline{\bar{A} \vee B}) \vee C \equiv (A \land \overline{B}) \lor C $ (2)
+	
+	Пусть  $A = 0, B = 0, C = 0$, тогда (1) $= 1$, а (2) $= 0$ $\Rightarrow A \to (B \to C) \not
+	\equiv (A \to B) \to C$.
+	
+	\textbf{Ответ}: нет.
+	
+	\section*{№3}
+	
+	$(A \land (B \to C)) \equiv ((A \land B) \to (A \land C)) $ - ?
+	
+	$A \land (B \to C) \equiv A \land (\overline{B} \lor C) $ (1)
+	
+	$(A \land B) \to (A \land C) \equiv (\overline{A} \lor \overline{B}) \lor (A \land C) \equiv 
+	\overline{A} \lor \overline{B} \lor (A \land C)$ (2)
+	
+	При $A = 0:$ (1) $\equiv 0$, (2) $\equiv 1$, значит, (1) $\not \equiv$ (2) $ \Rightarrow (A \land (B \to C)) \not \equiv ((A \land B) \to (A \land C)) $
+	
+	\textbf{Ответ}: нет.
+	
+	\section*{№4}
+	
+		$(A \to (B \to C)) \equiv ((A \to B) \to (A \to C)) $ - ?
+		
+		$A \to (B \to C) \equiv \overline{A} \lor (\overline{B} \lor C)  \equiv \overline{A} \lor \overline{B} \lor C$ (1)
+		
+		$(A \to B) \to (A \to C) \equiv  \overline{(\overline{A} \lor B)} \lor (\overline{A} \lor C) \equiv (A \land \overline{B}) \lor (\overline{A} \lor C) \equiv (A \land \overline{B}) \lor \overline{A} \lor C$ (2)
+		
+		Пусть $A = 1$: (1) $\equiv 0 \lor \overline{B} \lor C \equiv \overline{B} \lor C$, (2)
+		$\equiv (1 \land \overline{B}) \lor \overline{1} \lor C \equiv \overline{B} \lor C$ $\Rightarrow$ (1) $\equiv$ (2).
+		
+		Пусть $A = 0$: (1) $\equiv \overline{0} \lor \overline{B} \lor C \equiv 1$, (2) $\equiv
+		(0 \land \overline{B}) \lor \overline{0} \lor C \equiv 1 \Rightarrow (1) \equiv (2)$.
+		
+		Значит, $(A \to (B \to C)) \equiv ((A \to B) \to (A \to C)) $.
+		
+		\textbf{Ответ}: да.
+		
+		\section*{№5}
+		
+		Если истинны более половины высказываний A, B, C, то истинны или 2, или 3 высказывания, таким образом, это высказывание можно записать как:
+		
+		$((A\land B \land \overline{C}) \lor  (A\land C \land \overline{B}) \lor (C\land B \land \overline{A}) \lor (A\land B \land C)) \equiv 1$
+		
+		\section*{№6}
+		
+		Д-ть: $a \times b = n \to (a \leq \sqrt{n}) \lor (b \leq \sqrt{n}) $
+		
+		Д-во:
+		
+		По методу контрапозии если $(a > \sqrt{n}) \land (b > \sqrt{n}) \to a \times b \ne n$, то $a \times b = n \to (a \leq \sqrt{n}) \lor (b \leq \sqrt{n}) $.
+		
+		Если $(a > \sqrt{n}) \land (b > \sqrt{n})$, то $a \times b > n\Rightarrow a \times b \ne n$, значит, $a \times b = n \to (a \leq \sqrt{n}) \lor (b \leq \sqrt{n}) $.
+		
+		\begin{flushright}
+			\textbf{чтд}
+		\end{flushright}
+	
+	\section*{№7}
+	
+	Д-ть: $(n^{25} + n^{64})\ \vdots \ 2\  \forall \ n > 0, n \in Z$
+	
+	Д-во:
+	
+	Если $n > 0, n \in Z$, то $ n = 2p$ или $ n = 2p + 1$, где $p >0, p \in Z$.
+	
+	$1) n = 2p: (2p)^{25} + (2p) ^ {64}  = 2^{25}p^{25} + 2^{64}p^{64} = 2(2^{24}p^{25} + 2^{63}p^{64}) \ \vdots \ 2$
+	
+	$2) n = 2p + 1: (2p + 1)^{25} + (2p + 1) ^ {64}$. Нечетное число при умножении на нечетное число даёт нечетное число (тк количество множителей, кратных 2, равно 0) 
+	$ \Rightarrow (2p + 1)^{25}$ - нечет, $(2p + 1) ^ {64}$ - нечет $ \Rightarrow (2p + 1)^{25} + (2p + 1) ^ {64} $ - чет (тк нечет + нечет = чет) $  \ \vdots \ 2$
+	
+	Значит, $(n^{25} + n^{64})\ \vdots \ 2 \  \forall \ n > 0, n \in Z$
+	
+	\begin{flushright}
+		\textbf{чтд}
+	\end{flushright}
+
+\section*{№8}
+
+	$A$ - $w$ чётное, $B$ - все числа $x, y, z$ чётные.
+	$x^2+y^2+z^2=w^2$
+	
+	Д-ть: $A \equiv B$
+	
+	Д-во:
+	
+	Если $A \to B \land B \to A$, то $A \equiv B$ (и наоборот) (1)
+	
+	1) Если все числа $x, y, z$ чётные (выполняется $B$), то $x^2+y^2+z^2$ - чётное число (тк $x^2, y^2, z^2$ - чёт) $\Rightarrow w^2 \ \vdots \ 2 \Rightarrow w  \ \vdots \ 2$ 
+	(тк $x, y, z, w \in Z$ по усл и, если $w$ - нечет, то $ w = 2p + 1 \ (p \in Z), w^2=(2p+1)^2
+	= 4p^2 + 2p + 1$ - нечет число)
+	$	\Rightarrow$ выполняется $ A \Rightarrow B \to A$	
+	
+	2) Если $w$ чётное (выполняется $A$), то $ w = 2p \ (p \in Z), w^2 = 4p^2 \Rightarrow x^2+y^2+z^2 \ \vdots \ 4$
+	
+	Целое число в квадрате при делении на 4 может давать остаток 0 (если оно чётное) или остаток 1 (если оно нечётное). Таким образом, если сумма 3 квадратов целых чисел делится на 4 (т.е. даёт остаток 0), то каждое из 3 квадратов целых чисел даёт остаток 0 $\Rightarrow$ делится на 4 $\Rightarrow$ это целое число делится на 2 $\Rightarrow$ является чётным $\Rightarrow$ числа $x, y, z$ чётные $\Rightarrow A \to B  $
+	
+	Из 1), 2) и (1) следует, что $A \equiv B$.
+	
+	\begin{flushright}
+		\textbf{чтд}
+	\end{flushright}
+	
+	
+\end{document}	
